@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 4 Effect Size | Estimation Statistics</title>
+  <meta name="description" content="Topic 4 Effect Size | Estimation Statistics" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 4 Effect Size | Estimation Statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 4 Effect Size | Estimation Statistics" />
+  
+  
+  
+
+<meta name="author" content="Dan MacLean" />
+
+
+<meta name="date" content="2021-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="r-fundamentals.html"/>
+<link rel="next" href="confidence-intervals.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An Estimation Statistics Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setting up</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#knowledge-prerequisites"><i class="fa fa-check"></i><b>1.1.1</b> Knowledge prerequisites</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#software-prerequisites"><i class="fa fa-check"></i><b>1.1.2</b> Software prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
+<li class="chapter" data-level="2.1" data-path="motivation.html"><a href="motivation.html#variability-in-measurements"><i class="fa fa-check"></i><b>2.1</b> Variability in measurements</a></li>
+<li class="chapter" data-level="2.2" data-path="motivation.html"><a href="motivation.html#summarising-your-data-can-lead-to-wrong-conclusions"><i class="fa fa-check"></i><b>2.2</b> Summarising your data can lead to wrong conclusions</a></li>
+<li class="chapter" data-level="2.3" data-path="motivation.html"><a href="motivation.html#p---one-value-to-fool-them-all"><i class="fa fa-check"></i><b>2.3</b> <em>p</em> - one value to fool them all?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="motivation.html"><a href="motivation.html#ten-thousand-random-numbers"><i class="fa fa-check"></i><b>2.3.1</b> Ten Thousand Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="motivation.html"><a href="motivation.html#estimation-statistics"><i class="fa fa-check"></i><b>2.4</b> Estimation Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-fundamentals.html"><a href="r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> R Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#about-this-chapter"><i class="fa fa-check"></i><b>3.1</b> About this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="r-fundamentals.html"><a href="r-fundamentals.html#working-with-r"><i class="fa fa-check"></i><b>3.2</b> Working with R</a></li>
+<li class="chapter" data-level="3.3" data-path="r-fundamentals.html"><a href="r-fundamentals.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-objects-and-functions"><i class="fa fa-check"></i><b>3.3.1</b> Using objects and functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r-fundamentals.html"><a href="r-fundamentals.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="r-fundamentals.html"><a href="r-fundamentals.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
+<li class="chapter" data-level="3.6" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-r-help"><i class="fa fa-check"></i><b>3.6</b> Using R Help</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="effect-size.html"><a href="effect-size.html"><i class="fa fa-check"></i><b>4</b> Effect Size</a><ul>
+<li class="chapter" data-level="4.1" data-path="effect-size.html"><a href="effect-size.html#difference-in-sample-means"><i class="fa fa-check"></i><b>4.1</b> Difference in sample means</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="effect-size.html"><a href="effect-size.html#standardised-effect-sizes"><i class="fa fa-check"></i><b>4.1.1</b> Standardised Effect Sizes</a></li>
+<li class="chapter" data-level="4.1.2" data-path="effect-size.html"><a href="effect-size.html#calculating-mean-difference-effect-sizes-in-practice"><i class="fa fa-check"></i><b>4.1.2</b> Calculating Mean Difference Effect Sizes in Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="effect-size.html"><a href="effect-size.html#explained-variation"><i class="fa fa-check"></i><b>4.2</b> Explained variation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="effect-size.html"><a href="effect-size.html#pearsons-r"><i class="fa fa-check"></i><b>4.2.1</b> Pearson’s <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="effect-size.html"><a href="effect-size.html#r2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(r^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="effect-size.html"><a href="effect-size.html#using-the-effect-size"><i class="fa fa-check"></i><b>4.3</b> Using the effect size</a></li>
+<li class="chapter" data-level="4.4" data-path="effect-size.html"><a href="effect-size.html#the-assumptions-of-effect-sizes"><i class="fa fa-check"></i><b>4.4</b> The assumptions of effect sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>5.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-on-normally-distributed-data"><i class="fa fa-check"></i><b>5.2</b> Confidence intervals on Normally distributed data</a></li>
+<li class="chapter" data-level="5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#using-a-ci"><i class="fa fa-check"></i><b>5.3</b> Using a CI</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-practice"><i class="fa fa-check"></i><b>5.3.1</b> Confidence Intervals in practice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#bootstrap-estimation-of-confidence-intervals"><i class="fa fa-check"></i><b>5.4</b> Bootstrap Estimation of Confidence Intervals</a></li>
+<li class="chapter" data-level="5.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#plotting-the-bootstrap-distribution"><i class="fa fa-check"></i><b>5.5</b> Plotting the bootstrap distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bootstrap-sampling.html"><a href="bootstrap-sampling.html"><i class="fa fa-check"></i><b>6</b> Bootstrap Sampling</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimation Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="effect-size" class="section level1">
+<h1><span class="header-section-number">Topic 4</span> Effect Size</h1>
+<p>The first of the three central ideas in Estimation Statistics is the concept of the <code>effect size</code>. This is an essential component in assessing the strength of a relationship between variables and a critical tool in working out whether a statistical claim (like significance) is valid or not</p>
+<p>You will already be familiar with the most common effect sizes, these are common metrics like the sample mean difference, the regression coefficient (<span class="math inline">\(r\)</span>) from a regression analysis or the likelihood of an event.</p>
+<div id="difference-in-sample-means" class="section level2">
+<h2><span class="header-section-number">4.1</span> Difference in sample means</h2>
+<p>The most commonly seen effect size is the difference between sample means. Despite the apparent simplicity and to an extent, obviousness, of the difference in the means of two groups this parameter is a very useful tool in determining whether or not a claim of difference or significance is valid or not.</p>
+<p>One advantage and disadvantage of using the difference in sample means is that to have a good intuition about the claim of significance we must have some prior experience about whether the observed effect size is a big or small one. Large effect sizes are more significant, all other things being equal, but the absolute effect size is highly dependent on the specifics of the domain we are working in. For example 10g weight difference between two groups of adult humans is not going to be seen as significant, however 10g in difference in groups of adult domestic mice is quite large.</p>
+<p>If we’re going to be formal about it, then we can write the absolute effect size as follows: Where <span class="math inline">\(n_i\)</span> is the sample size for group <span class="math inline">\(x_i\)</span></p>
+<p><span class="math display">\[\frac{\sum{x_1}}{n_1} - \frac{\sum{x_2}}{n_2}\]</span></p>
+<p>Which looks more complicated than it is. The formula just describes the mean of the second group subtracted from the mean of the first group. We can simplify each term thus</p>
+<p><span class="math display">\[\bar{x_i} = \frac{\sum{x_i}}{n_i}\]</span></p>
+<p>Such that the formula for effect size becomes</p>
+<p><span class="math display">\[\bar{x_1} - \bar{x_2}\]</span>
+And <span class="math inline">\(\bar{x}\)</span> is a pretty standard name for a sample mean in the statistical literature.</p>
+<div id="standardised-effect-sizes" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Standardised Effect Sizes</h3>
+<p>It would be extremely difficult to say whether even a 100g difference in human weight is as of as great significance as 10g in mice. Given that the real world meaningfulness of the mean sample difference is dependent upon the context we often need a mechanism through which we can compare effect sizes. Standardised effect sizes can help with this, and they work by taking into account the pooled standard deviation of the two samples, expressing the mean difference in terms of the variation in the numbers that make up the mean. If <span class="math inline">\(s\)</span> is the pooled standard deviation then our standardised effect size <span class="math inline">\(d\)</span> is</p>
+<p><span class="math display">\[d =\frac{\bar{x_1} - \bar{x_2}}{s}\]</span>
+Computing this for our mouse and human data would enable us to make reasonable comparisons between the significance of the effect size in the different experiments.</p>
+<p>The standardised effect size was introduced by Jacob Cohen and the number is known as Cohen’s <span class="math inline">\(d\)</span>. Cohen also suggested descriptions of the different values of <span class="math inline">\(d\)</span> and the effect size:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Effect.Size</th>
+<th align="center">d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Very Small</td>
+<td align="center">0.01</td>
+</tr>
+<tr class="even">
+<td align="center">Small</td>
+<td align="center">0.20</td>
+</tr>
+<tr class="odd">
+<td align="center">Medium</td>
+<td align="center">0.50</td>
+</tr>
+<tr class="even">
+<td align="center">Large</td>
+<td align="center">0.80</td>
+</tr>
+<tr class="odd">
+<td align="center">Very Large</td>
+<td align="center">1.20</td>
+</tr>
+<tr class="even">
+<td align="center">Huge</td>
+<td align="center">2.00</td>
+</tr>
+</tbody>
+</table>
+<p>So if we get a <span class="math inline">\(d\)</span> of 0.7, we have a medium to large effect size.</p>
+
+<div class="callout">
+Computing <span class="math inline">\(s\)</span> is done according to a formula called the pooled standard deviation for two independent samples. If you don’t look at lot’s of formula it looks a little scary at first glance so I haven’t included it here, I mention it just to point out that it <em>isn’t</em> the same as adding up the two individual sample standard deviations.
+</div>
+
+</div>
+<div id="calculating-mean-difference-effect-sizes-in-practice" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Calculating Mean Difference Effect Sizes in Practice</h3>
+<p>Thankfully there are functions in R that we can use to calculate each of the quantities we have mentioned straight from the data we collect, so we don’t need to know all the formulae off the top of our heads. We can use the <code>effectsize</code> library for this. First though, let’s generate some samples of data from a random normal distribution with mouse sized and human sized means (measuring their weight in grams), but a standard deviation that is the same proportion of the mean in each</p>
+<p>Domestic mice are about 20 g in mass.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="effect-size.html#cb26-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>) <span class="co"># ensure random numbers are identical every time</span></span>
+<span id="cb26-2"><a href="effect-size.html#cb26-2"></a><span class="kw">library</span>(effectsize)</span>
+<span id="cb26-3"><a href="effect-size.html#cb26-3"></a>x_mouse &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="dv">20</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb26-4"><a href="effect-size.html#cb26-4"></a>y_mouse &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb26-5"><a href="effect-size.html#cb26-5"></a><span class="kw">cohens_d</span>(x_mouse, y_mouse)</span></code></pre></div>
+<pre><code>## Cohen&#39;s d |       95% CI
+## ------------------------
+## 1.91      | [0.82, 2.97]
+## 
+## - Estimated using pooled SD.</code></pre>
+<p>So we get an effect size which is pretty large!</p>
+<p>Now let’s try the human data, humans are about 65 kg in mass (depending on where you measure!)</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="effect-size.html#cb28-1"></a>x_human &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">65000</span>, <span class="dt">sd =</span> <span class="dv">65000</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb28-2"><a href="effect-size.html#cb28-2"></a>y_human &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">32500</span>, <span class="dt">sd =</span> <span class="dv">32500</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb28-3"><a href="effect-size.html#cb28-3"></a></span>
+<span id="cb28-4"><a href="effect-size.html#cb28-4"></a><span class="kw">cohens_d</span>(x_human, y_human)</span></code></pre></div>
+<pre><code>## Cohen&#39;s d |       95% CI
+## ------------------------
+## 1.34      | [0.34, 2.30]
+## 
+## - Estimated using pooled SD.</code></pre>
+<p>The human effect size is of similar magnitude to that of the mouse, that is ‘large’, from intuition on both sets of measurements we can see that the halving of mass is a big effect, so it matches up. Let’s try the human measurements at a mouse size change</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="effect-size.html#cb30-1"></a>x_human &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">65000</span>, <span class="dt">sd =</span> <span class="dv">65000</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb30-2"><a href="effect-size.html#cb30-2"></a>y_human &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">64990</span>, <span class="dt">sd =</span> <span class="dv">64990</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span> )</span>
+<span id="cb30-3"><a href="effect-size.html#cb30-3"></a><span class="kw">cohens_d</span>(x_human, y_human)</span></code></pre></div>
+<pre><code>## Cohen&#39;s d |        95% CI
+## -------------------------
+## -0.24     | [-1.11, 0.65]
+## 
+## - Estimated using pooled SD.</code></pre>
+<p>As expected the effect size reduces to small.</p>
+</div>
+</div>
+<div id="explained-variation" class="section level2">
+<h2><span class="header-section-number">4.2</span> Explained variation</h2>
+<p>Another common type of effect size is that computed for correlation style data (like that we see in linear regression models), so when we have a continuous <span class="math inline">\(x\)</span> (explanatory variable) and a response . These effect sizes are based on the amount of the variance that is captured by the model (like a linear model). In other terms we’ve thought about explained variation as the fit to the model.</p>
+<p>We can visualise this in a scatter plot. The greater the explained variation, the better the fit to the line.</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-24-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-24-2.png" width="50%" /></p>
+<p>It is clear to see that the line (and therefore model) fits the data in the left panel much better than the line (model) fits the data in the right panel. The effect size of the better fit model is going to be larger.</p>
+<div id="pearsons-r" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Pearson’s <span class="math inline">\(r\)</span></h3>
+<p>Pearson’s <span class="math inline">\(r\)</span> value is one we are likely familiar with from correlation analysis and is a simple effect size we can use with continuous data. It runs from -1 to 1 with values around 0 indicating a smaller effect size and values at -1 or 1 indicating larger effect sizes. The sign (+/-) of <span class="math inline">\(r\)</span> indicates only the nature of the correlation, not the effect sizes, so -0.3 and + 0.3 are equivalently sized negative and positive correlations.</p>
+<p>The value of this effect size is interpreted differently from that of Cohen’s <span class="math inline">\(d\)</span>, as the values can only run from -1 to 1, here’s a brief table of categories</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Effect.Size</th>
+<th align="center">r</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Small</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="even">
+<td align="center">Medium</td>
+<td align="center">0.3</td>
+</tr>
+<tr class="odd">
+<td align="center">Large</td>
+<td align="center">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>These values vary from domain to domain, in some domains we would expect a much stronger correlation and correspondingly larger values of <span class="math inline">\(r\)</span> to give the same description of an effect size. Consider correlations between performances of machines like car engines, it’d be very surprising if they didn’t correlate in the very high 0.9s, whereas correlations of biological measurements would be good at a much lower level. The values given in the table above were stated by Cohen (again) for the Social Sciences. You’ll need to make conclusions judiciously and with an informed mind (and again in conjunction with other measures) for the domain you are working in.</p>
+<p>As it is fundamental, calculating Pearson’s <span class="math inline">\(r\)</span> is easy in R. Let’s use the data from the plots above to run through it. The left plot data is in a dataframe called <code>df1</code>, the right plot data is in a dataframe called <code>df2</code>. The function we need is <code>cor()</code>, which is part of base R.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="effect-size.html#cb32-1"></a><span class="kw">cor</span>(df1<span class="op">$</span>x, df1<span class="op">$</span>y)</span></code></pre></div>
+<pre><code>## [1] 0.9716088</code></pre>
+<p>Which gives a high correlation indeed. For the less well fitting data we see this</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="effect-size.html#cb34-1"></a><span class="kw">cor</span>(df2<span class="op">$</span>x, df2<span class="op">$</span>y)</span></code></pre></div>
+<pre><code>## [1] 0.1213444</code></pre>
+<p>a much lower Pearson’s <span class="math inline">\(r\)</span>.</p>
+</div>
+<div id="r2" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> <span class="math inline">\(r^2\)</span></h3>
+<p>A related effect size is <span class="math inline">\(r^2\)</span> which is literally <span class="math inline">\(r \times r\)</span>. It measures the proportion of variance shared between the two variables under examination, so can be interpreted as the amount of variance explained. This one naturally runs between values of 0 and 1 so loses the information about direction of correlation.</p>
+</div>
+</div>
+<div id="using-the-effect-size" class="section level2">
+<h2><span class="header-section-number">4.3</span> Using the effect size</h2>
+<p>At the beginning of this course we cautioned about using <span class="math inline">\(p\)</span>-values as the sole measure to decide whether a claim about differences is significant or important. The same caution applies to the effect size, whether you use Cohen’s <span class="math inline">\(d\)</span>, Pearson’s <span class="math inline">\(r\)</span> or some other measure. There’s no cut-off that always makes sense, so never use it on it’s own. Use your expertise and other measures we’ll see later (and including but not limited to hypothesis tests and <span class="math inline">\(p\)</span>-values) to make data informed interpretations about your results and never rely on arbitrary cut-offs. At the end of this book we will examine the integration of the different estimate statistics covered.</p>
+</div>
+<div id="the-assumptions-of-effect-sizes" class="section level2">
+<h2><span class="header-section-number">4.4</span> The assumptions of effect sizes</h2>
+<p>As we’ve discovered before, statisticians make assumptions about data when discovering statistics. The standard assumption is that the data and the variance are Normally Distributed (so follow the Normal Distribution). The effect sizes we’be discussed here make that assumption in the calculations too. Practically, it means that the further you get away from a ‘Normal’ situation the less use the named effect size formula will be. There are other effect sizes for non-Normal data, notably the Spearman’s Rank <span class="math inline">\(r\)</span> and Kendall’s <span class="math inline">\(\tau\)</span> for ranked and categorical correlations. Sometimes the raw mean difference is the only practical measure of effect size.</p>
+<p>Although it is important that you are aware whether your data are close to Normal or not, the problem isn’t always drastic and in combination with other measures we can reduce misuse of single statistics and we will look at ways of dealing with arbitrary distributions with Estimation Statistics.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-fundamentals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="confidence-intervals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 2 Motivation | Estimation Statistics</title>
+  <meta name="description" content="Topic 2 Motivation | Estimation Statistics" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 2 Motivation | Estimation Statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 2 Motivation | Estimation Statistics" />
+  
+  
+  
+
+<meta name="author" content="Dan MacLean" />
+
+
+<meta name="date" content="2021-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="r-fundamentals.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An Estimation Statistics Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setting up</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#knowledge-prerequisites"><i class="fa fa-check"></i><b>1.1.1</b> Knowledge prerequisites</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#software-prerequisites"><i class="fa fa-check"></i><b>1.1.2</b> Software prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
+<li class="chapter" data-level="2.1" data-path="motivation.html"><a href="motivation.html#variability-in-measurements"><i class="fa fa-check"></i><b>2.1</b> Variability in measurements</a></li>
+<li class="chapter" data-level="2.2" data-path="motivation.html"><a href="motivation.html#summarising-your-data-can-lead-to-wrong-conclusions"><i class="fa fa-check"></i><b>2.2</b> Summarising your data can lead to wrong conclusions</a></li>
+<li class="chapter" data-level="2.3" data-path="motivation.html"><a href="motivation.html#p---one-value-to-fool-them-all"><i class="fa fa-check"></i><b>2.3</b> <em>p</em> - one value to fool them all?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="motivation.html"><a href="motivation.html#ten-thousand-random-numbers"><i class="fa fa-check"></i><b>2.3.1</b> Ten Thousand Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="motivation.html"><a href="motivation.html#estimation-statistics"><i class="fa fa-check"></i><b>2.4</b> Estimation Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-fundamentals.html"><a href="r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> R Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#about-this-chapter"><i class="fa fa-check"></i><b>3.1</b> About this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="r-fundamentals.html"><a href="r-fundamentals.html#working-with-r"><i class="fa fa-check"></i><b>3.2</b> Working with R</a></li>
+<li class="chapter" data-level="3.3" data-path="r-fundamentals.html"><a href="r-fundamentals.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-objects-and-functions"><i class="fa fa-check"></i><b>3.3.1</b> Using objects and functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r-fundamentals.html"><a href="r-fundamentals.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="r-fundamentals.html"><a href="r-fundamentals.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
+<li class="chapter" data-level="3.6" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-r-help"><i class="fa fa-check"></i><b>3.6</b> Using R Help</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="effect-size.html"><a href="effect-size.html"><i class="fa fa-check"></i><b>4</b> Effect Size</a><ul>
+<li class="chapter" data-level="4.1" data-path="effect-size.html"><a href="effect-size.html#difference-in-sample-means"><i class="fa fa-check"></i><b>4.1</b> Difference in sample means</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="effect-size.html"><a href="effect-size.html#standardised-effect-sizes"><i class="fa fa-check"></i><b>4.1.1</b> Standardised Effect Sizes</a></li>
+<li class="chapter" data-level="4.1.2" data-path="effect-size.html"><a href="effect-size.html#calculating-mean-difference-effect-sizes-in-practice"><i class="fa fa-check"></i><b>4.1.2</b> Calculating Mean Difference Effect Sizes in Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="effect-size.html"><a href="effect-size.html#explained-variation"><i class="fa fa-check"></i><b>4.2</b> Explained variation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="effect-size.html"><a href="effect-size.html#pearsons-r"><i class="fa fa-check"></i><b>4.2.1</b> Pearson’s <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="effect-size.html"><a href="effect-size.html#r2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(r^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="effect-size.html"><a href="effect-size.html#using-the-effect-size"><i class="fa fa-check"></i><b>4.3</b> Using the effect size</a></li>
+<li class="chapter" data-level="4.4" data-path="effect-size.html"><a href="effect-size.html#the-assumptions-of-effect-sizes"><i class="fa fa-check"></i><b>4.4</b> The assumptions of effect sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>5.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-on-normally-distributed-data"><i class="fa fa-check"></i><b>5.2</b> Confidence intervals on Normally distributed data</a></li>
+<li class="chapter" data-level="5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#using-a-ci"><i class="fa fa-check"></i><b>5.3</b> Using a CI</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-practice"><i class="fa fa-check"></i><b>5.3.1</b> Confidence Intervals in practice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#bootstrap-estimation-of-confidence-intervals"><i class="fa fa-check"></i><b>5.4</b> Bootstrap Estimation of Confidence Intervals</a></li>
+<li class="chapter" data-level="5.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#plotting-the-bootstrap-distribution"><i class="fa fa-check"></i><b>5.5</b> Plotting the bootstrap distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bootstrap-sampling.html"><a href="bootstrap-sampling.html"><i class="fa fa-check"></i><b>6</b> Bootstrap Sampling</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimation Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="motivation" class="section level1">
+<h1><span class="header-section-number">Topic 2</span> Motivation</h1>
+<div id="variability-in-measurements" class="section level2">
+<h2><span class="header-section-number">2.1</span> Variability in measurements</h2>
+<p>Variability in measurements is a thing that happens as a natural consequence of working with complex systems that are affected by many variables in stochastic ways. Biological systems are some of the most variable we know. The variability in our experiments could be a function of the behaviour of the system yet it is common practice to hide that variability when we start to analyse our data by using summary plots like box-plots. Ultimately, that’s bad news for our science, because the variability could be telling us something.</p>
+</div>
+<div id="summarising-your-data-can-lead-to-wrong-conclusions" class="section level2">
+<h2><span class="header-section-number">2.2</span> Summarising your data can lead to wrong conclusions</h2>
+<p>We all know that when you create a bar chart and put some error bars on it, you’re really only representing two numbers, usually a mean and standard deviation. People create bar plots instinctively, and in doing so can miss important stuff. Look at this figure:</p>
+<p><img src="fig/barplots.png" alt="Weissgerber et al" />
+<em>source:</em> <a href="http://journals.plos.org/plosbiology/article/figure/image?size=large&amp;id=info:doi/10.1371/journal.pbio.1002128.g001">Weissgerber et al</a></p>
+<p>The bar chart in panel A is one that came out of all those sets of numbers in the other panels. But it really hides some important stuff, like the fact the numbers are clearly separating into two groups in panel D, or that the two samples have different sizes in panel E.</p>
+<p>Worse than any of these is that the significant difference in the t-test is coming from just one point in panel C. From this data set you might be tempted to conclude that there is a significant difference in the two samples and if you relied on the bar chart as a visualisation then you’d never suspect there was something funny.</p>
+<p>Some enthusiastic young science communicators have even started a Kickstarter to lobby journals to stop using, in particular, bar charts! These people, calling themselves Bar Barplots, have a nice video on one of the main problems with bar charts. Have a look at this page on Kickstarter . <a href="https://www.kickstarter.com/projects/1474588473/barbarplots">Kickstarter - Barbarplots</a>, especially this video <a href="https://ksr-video.imgix.net/projects/2453455/video-665338-h264_high.mp4">Kickstarter - Barbarplots video</a>.</p>
+<p>Ignoring your data visualisation and just making bar plots could be an error! It’s important that you spend a little time getting to know, and presenting your data as clearly and thoroughly as possible.</p>
+</div>
+<div id="p---one-value-to-fool-them-all" class="section level2">
+<h2><span class="header-section-number">2.3</span> <em>p</em> - one value to fool them all?</h2>
+<p>But why would you care about this, in the end a <em>p</em>-value won’t a <em>p</em>-value help you see real differences and make this all easy? Sadly, that isn’t true. Let’s do an experiment to test that.</p>
+<div id="ten-thousand-random-numbers" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Ten Thousand Random Numbers</h3>
+<p>Below is a set of figures that show different views of the same set of data. Every frame of the 100 frames shows a different sampling from the same pool of 10,000 random normally distributed numbers.</p>
+<div class="figure">
+<img src="fig/animation.gif" alt="" />
+<p class="caption">Random Sample Plots</p>
+</div>
+<p>Step-by-step, here’s how these figures are made.</p>
+<ol style="list-style-type: decimal">
+<li>Generate a pool of 10,000 random numbers (mean 5, sd 1)</li>
+<li>From that, select 10 and call it sample 1.</li>
+<li>Select another 10, call it sample 2.</li>
+<li>Draw plots comparing each sample</li>
+<li>Do an independent <em>t</em>-test on the sample 1 and sample 2 to test for significant differences in means.</li>
+</ol>
+<p>The figures are plotted with a red border if <em>p</em> comes up less than 0.05. The thing is, the samples are from the same background pool, so intuitively you might suspect that none should be different from the others. The reason that some of them do is because a <em>p</em> value only states that the difference observed occurs by chance in <em>p</em> of all events, so for 100, we’d expect 5 to be marked out by chance. In this run of the experiment we get three. Here they are:</p>
+<p><img src="fig/file_28.png" alt="Run 28" />
+<img src="fig/file_66.png" alt="Run 66" /></p>
+<p>Look at the different plots for each. It is observable that for all these the barplots look very convincingly different. But in the context with the other plots its clear that they aren’t showing the whole of the story (or in fact much of it). The boxplots (top left) do a good job of showing the range and the violin and density plots (bottom row) do a good job of showing the shape. It is only really the point plot (first column, middle row) that reveals the positions of the data points and shows that the conclusion of the <em>p</em> value is likely skewed by one or two points in each sample. Concluding differences on this basis is <em>really</em> unsafe.</p>
+<p>Hence, the conclusion from this is that a range of visualisations is necessary to allow us to have confidence in our <em>p</em> values and understand the shapes of our data. Drawing box plots and sticking to <em>p</em> religiously is going to make us wrong more than we’d like!</p>
+</div>
+</div>
+<div id="estimation-statistics" class="section level2">
+<h2><span class="header-section-number">2.4</span> Estimation Statistics</h2>
+<p>So what can we do about this apparent problem? One strategy is to take a much less hypothesis test-centric approach to statistical analysis and apply other ways of thinking about the problems, instead we can use Estimation Statistics to look at the parameters of our data and get an idea of magnitude of an effect or difference and an associated confidence interval that estimates how believable that estimate is.</p>
+
+<div class="sidenote">
+Hey, isn’t all this rationale in the ggplot book? Umm, it is a bit, yeah! Graphical methods and Estimation Statistics are closely related because plots can show the parameters very well
+</div>
+
+<p>In this book we’ll take a look at some of the main features of Estimation Statistics with the intention that they’ll be useful in your future research. The same rule about taking a <span class="math inline">\(p\)</span>-value as your only determinant of whether a statistical claim is important or significant applies to the Estimation Statistics we’ll learn here. At the end of this book we will examine the integration of the different estimate statistics covered.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-fundamentals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 5 Confidence Intervals | Estimation Statistics</title>
+  <meta name="description" content="Topic 5 Confidence Intervals | Estimation Statistics" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 5 Confidence Intervals | Estimation Statistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 5 Confidence Intervals | Estimation Statistics" />
+  
+  
+  
+
+<meta name="author" content="Dan MacLean" />
+
+
+<meta name="date" content="2021-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="effect-size.html"/>
+<link rel="next" href="bootstrap-sampling.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">An Estimation Statistics Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setting up</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#knowledge-prerequisites"><i class="fa fa-check"></i><b>1.1.1</b> Knowledge prerequisites</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#software-prerequisites"><i class="fa fa-check"></i><b>1.1.2</b> Software prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
+<li class="chapter" data-level="2.1" data-path="motivation.html"><a href="motivation.html#variability-in-measurements"><i class="fa fa-check"></i><b>2.1</b> Variability in measurements</a></li>
+<li class="chapter" data-level="2.2" data-path="motivation.html"><a href="motivation.html#summarising-your-data-can-lead-to-wrong-conclusions"><i class="fa fa-check"></i><b>2.2</b> Summarising your data can lead to wrong conclusions</a></li>
+<li class="chapter" data-level="2.3" data-path="motivation.html"><a href="motivation.html#p---one-value-to-fool-them-all"><i class="fa fa-check"></i><b>2.3</b> <em>p</em> - one value to fool them all?</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="motivation.html"><a href="motivation.html#ten-thousand-random-numbers"><i class="fa fa-check"></i><b>2.3.1</b> Ten Thousand Random Numbers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="motivation.html"><a href="motivation.html#estimation-statistics"><i class="fa fa-check"></i><b>2.4</b> Estimation Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-fundamentals.html"><a href="r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> R Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#about-this-chapter"><i class="fa fa-check"></i><b>3.1</b> About this chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="r-fundamentals.html"><a href="r-fundamentals.html#working-with-r"><i class="fa fa-check"></i><b>3.2</b> Working with R</a></li>
+<li class="chapter" data-level="3.3" data-path="r-fundamentals.html"><a href="r-fundamentals.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-objects-and-functions"><i class="fa fa-check"></i><b>3.3.1</b> Using objects and functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="r-fundamentals.html"><a href="r-fundamentals.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a></li>
+<li class="chapter" data-level="3.5" data-path="r-fundamentals.html"><a href="r-fundamentals.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
+<li class="chapter" data-level="3.6" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-r-help"><i class="fa fa-check"></i><b>3.6</b> Using R Help</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="effect-size.html"><a href="effect-size.html"><i class="fa fa-check"></i><b>4</b> Effect Size</a><ul>
+<li class="chapter" data-level="4.1" data-path="effect-size.html"><a href="effect-size.html#difference-in-sample-means"><i class="fa fa-check"></i><b>4.1</b> Difference in sample means</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="effect-size.html"><a href="effect-size.html#standardised-effect-sizes"><i class="fa fa-check"></i><b>4.1.1</b> Standardised Effect Sizes</a></li>
+<li class="chapter" data-level="4.1.2" data-path="effect-size.html"><a href="effect-size.html#calculating-mean-difference-effect-sizes-in-practice"><i class="fa fa-check"></i><b>4.1.2</b> Calculating Mean Difference Effect Sizes in Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="effect-size.html"><a href="effect-size.html#explained-variation"><i class="fa fa-check"></i><b>4.2</b> Explained variation</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="effect-size.html"><a href="effect-size.html#pearsons-r"><i class="fa fa-check"></i><b>4.2.1</b> Pearson’s <span class="math inline">\(r\)</span></a></li>
+<li class="chapter" data-level="4.2.2" data-path="effect-size.html"><a href="effect-size.html#r2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(r^2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="effect-size.html"><a href="effect-size.html#using-the-effect-size"><i class="fa fa-check"></i><b>4.3</b> Using the effect size</a></li>
+<li class="chapter" data-level="4.4" data-path="effect-size.html"><a href="effect-size.html#the-assumptions-of-effect-sizes"><i class="fa fa-check"></i><b>4.4</b> The assumptions of effect sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals</a><ul>
+<li class="chapter" data-level="5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>5.1</b> Confidence Intervals</a></li>
+<li class="chapter" data-level="5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-on-normally-distributed-data"><i class="fa fa-check"></i><b>5.2</b> Confidence intervals on Normally distributed data</a></li>
+<li class="chapter" data-level="5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#using-a-ci"><i class="fa fa-check"></i><b>5.3</b> Using a CI</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-practice"><i class="fa fa-check"></i><b>5.3.1</b> Confidence Intervals in practice</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#bootstrap-estimation-of-confidence-intervals"><i class="fa fa-check"></i><b>5.4</b> Bootstrap Estimation of Confidence Intervals</a></li>
+<li class="chapter" data-level="5.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#plotting-the-bootstrap-distribution"><i class="fa fa-check"></i><b>5.5</b> Plotting the bootstrap distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="bootstrap-sampling.html"><a href="bootstrap-sampling.html"><i class="fa fa-check"></i><b>6</b> Bootstrap Sampling</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimation Statistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="confidence-intervals" class="section level1">
+<h1><span class="header-section-number">Topic 5</span> Confidence Intervals</h1>
+<div id="confidence-intervals-1" class="section level2">
+<h2><span class="header-section-number">5.1</span> Confidence Intervals</h2>
+<p>A confidence interval (CI) is a range estimate of a statistical parameter (a number or measure of some sort) that is computed from the data. It gives a range that the parameter falls in with as certain confidence (the confidence value), so a 95% Confidence Interval of the sample mean tells us the range in which we believe the sample mean will lie.</p>
+<p>We often see them rendered like this</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-28-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-28-2.png" width="50%" /></p>
+<p>But wait! Isn’t the first one error bars? Isn’t the second one percentiles of a distribution? That’s right, in fact the visual glyph used for confidence intervals and error bars or confidence intervals and percentiles are the same. This is because they are each a kind of numeric range and we can show them on figures in the same way. We must be careful not confuse them because they seldom show the same thing. To be explicit again confidence intervals show the likely range that a parameter (like a mean) falls in.</p>
+<p>Error bars usually show a sample mean plus or minus a fixed number like the standard deviation, but this doesn’t necessarily say anything about the confidence we have that the mean falls in that range.</p>
+<p>Similarly, percentiles show how much of the observed data fall in a range, e.g the 10th percentile shows where 10% of the data fall, but it again doesn’t necessarily say anything about the confidence we have about where a particular parameter falls.</p>
+</div>
+<div id="confidence-intervals-on-normally-distributed-data" class="section level2">
+<h2><span class="header-section-number">5.2</span> Confidence intervals on Normally distributed data</h2>
+<p>A common use of confidence intervals is in conjunction with the Normal Distribution as a Null Model. In which we mean we assume that the variability of a measurement, e.g mouse mass is Normally distributed. As the Normal distribution is well understood we can use its characteristics to get a CI for the mean of a sample.</p>
+<p>Let’s invent some mouse weights and put them in a vector <code>x</code>.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="confidence-intervals.html#cb36-1"></a>mouse_wts</span></code></pre></div>
+<pre><code>##  [1] 19.57635 29.59349 23.89572 17.75500 11.47902 29.90031 26.04292 30.18206
+##  [9] 30.28894  8.09662</code></pre>
+<p>We can use the <code>qnorm()</code> function to get the limits of a given CI on a standardised Normal Distribution. We provide the CI size (here we’ll use 95%) but because a 95% confidence interval has a total of 5% that must fall outside of each end of the interval, we use half of 5% (2.5%) in the function (and we provide it as a probability to this function so it’s 0.975).</p>
+<p>We can then plug this into a standard formula to get the half width of the CI using the mean and standard deviation of the sample.</p>
+<p>Finally, we can add and subtract this value from the sample mean to get the lower and upper bounds of the CI we want.</p>
+<p>This isn’t quite as complicated as it reads, here’s the code</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="confidence-intervals.html#cb38-1"></a>x_bar &lt;-<span class="st"> </span><span class="kw">mean</span>(mouse_wts)</span>
+<span id="cb38-2"><a href="confidence-intervals.html#cb38-2"></a>s &lt;-<span class="st"> </span><span class="kw">sd</span>(mouse_wts)</span>
+<span id="cb38-3"><a href="confidence-intervals.html#cb38-3"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(mouse_wts)</span>
+<span id="cb38-4"><a href="confidence-intervals.html#cb38-4"></a></span>
+<span id="cb38-5"><a href="confidence-intervals.html#cb38-5"></a>half_width &lt;-<span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>) <span class="op">*</span><span class="st"> </span>s <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(n)</span>
+<span id="cb38-6"><a href="confidence-intervals.html#cb38-6"></a></span>
+<span id="cb38-7"><a href="confidence-intervals.html#cb38-7"></a>left_bound &lt;-<span class="st"> </span>x_bar <span class="op">-</span><span class="st"> </span>half_width</span>
+<span id="cb38-8"><a href="confidence-intervals.html#cb38-8"></a>right_bound &lt;-<span class="st"> </span>x_bar <span class="op">+</span><span class="st"> </span>half_width</span>
+<span id="cb38-9"><a href="confidence-intervals.html#cb38-9"></a></span>
+<span id="cb38-10"><a href="confidence-intervals.html#cb38-10"></a>left_bound</span></code></pre></div>
+<pre><code>## [1] 17.625</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="confidence-intervals.html#cb40-1"></a>right_bound</span></code></pre></div>
+<pre><code>## [1] 27.73708</code></pre>
+<p>So we calculated that the 95% CI of the mean of mouse weights runs from 17.6250015 to 27.7370849.</p>
+<p>The derivation of this formula is generally available in every statistics text book, so I won’t repeat it here, I’ll leave it to the interested reader to follow up if they wish.</p>
+</div>
+<div id="using-a-ci" class="section level2">
+<h2><span class="header-section-number">5.3</span> Using a CI</h2>
+<p>Now that we have a CI constructed we can use it. One fact about CIs calculated on a sample is that the true mean of the population (E.G the weights of all mice in the world, not just the ones we sampled) falls within an <span class="math inline">\(x\)</span>% CI <span class="math inline">\(x\)</span>% of the time. We can use this fact to estimate whether another measurement like the mean of another sample falls within a CI. If it <em>doesn’t</em> then we can say the mean of the second sample only occurs in samples from the population (100 - <span class="math inline">\(x\)</span>%) of the time. So if another sample mean falls outside of our 95% CI we can say that two samples with means this far apart only occur by chance less than 5% of the time.</p>
+<p>This is actually analogous to how a hypothesis test works, particularly <span class="math inline">\(t\)</span>-tests. So the interpretation of a difference in populations is analogous.</p>
+<p>Here’s a graphical representation of that on our mouse data</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>The dotted blue line represents a measurement of a single mouse, the green areas in the density plot are the area’s outside the 95% CI we computed. So the specific measurement looks like it wouldn’t come from our population very often.</p>
+<div id="confidence-intervals-in-practice" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Confidence Intervals in practice</h3>
+<p>Of course, looking at the density curve we see that it is not very convincing as the curve of a Normal distribution and the areas outside the CI seem wider than we might have expected from textbook renderings of a Normal distribution. The numbers for mouse weights were drawn randomly from a Normal distribution and the off pattern is due to the small sample size, we only used 10 mouse weight measurement. As a result the estimation of the curve is quite lumpy. Such a phenomenon not only highlights the need for sensibly sized samples but also indicates the importance of careful examination of the data on which we are creating confidence intervals. To repeat our familiar refrain you can’t use a single measure on it’s own. Other measures should be integrated and confidence intervals are best interpreted along side full representations of the data. Here is the same plot with a histogram that shows more finely the actual data</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>We can see from the histogram that the data are pretty gappy. Most bins have just one measurement in them (see the right hand scale), so the sparse sampling makes our curve density plot of the data less Normal looking. Putting the histogram data on with the confidence interval gives a much clearer view of the data and improves the interpretability of the data.</p>
+</div>
+</div>
+<div id="bootstrap-estimation-of-confidence-intervals" class="section level2">
+<h2><span class="header-section-number">5.4</span> Bootstrap Estimation of Confidence Intervals</h2>
+<p>What can we do about estimating a confidence interval of a parameter like a sample mean when we don’t know or can’t reasonably assume that the data are drawn from a Normal distribution? We can’t apply the formula we saw above as that is tied to assumptions of Normality, but we can use brute force computer power to create a bootstrap confidence intervals.</p>
+<p>Bootstrapping is a resampling technique that builds a bigger data set out of a smaller one and hopes to work out what the spread of data would be. Crucially, it doesn’t rely on assumptions and can be used on any sort of data.</p>
+<p>The logic of bootstrapping goes as follows:</p>
+<ol style="list-style-type: decimal">
+<li>We have a set of numbers in a sample that came from a population, so we know these appear in the population</li>
+<li>If we take lots of samples from our sample, and each time recalculate the parameter we are trying to estimate we can get a distribution of parameter estimates.</li>
+<li>The distribution of parameter estimates tells us how likely a given parameter estimate is based on the data</li>
+</ol>
+<p>In summary it means we can create a confidence interval for our parameter from the data we have.</p>
+
+<div class="sidenote">
+This ‘magic’ step is where bootstrapping gets its name from - the phrase “pulling yourself up by your bootstraps” which basically means to create something for yourself from nothing - literally lift yourself up by grabbing hold and pulling on your boots
+</div>
+
+<p>Let’s work through this step-by-step to make it clearer. Starting with the <code>mouse_wts</code> data, lets make a random sample of the values of <code>mouse_wts</code> of equal length to <code>mouse_wts</code> (IE 10) and get the mean of that</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="confidence-intervals.html#cb42-1"></a>sample_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">sample</span>(mouse_wts, <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb42-2"><a href="confidence-intervals.html#cb42-2"></a></span>
+<span id="cb42-3"><a href="confidence-intervals.html#cb42-3"></a>x_bar_sample_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">mean</span>(sample_<span class="dv">1</span>)</span></code></pre></div>
+<p>Note that we sample ‘with replacement’ (we effectively put each number back to be selected again if needed) if we didn’t we’d end up with just the same set of numbers as in the original <code>mouse_wts</code> which is what we don’t want - we want a sample of the original numbers. So conceivably we could get the same number from <code>mouse_wts</code> all the time. This is actually a desirable feature. Compare <code>mouse_wts</code> and <code>sample_1</code></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="confidence-intervals.html#cb43-1"></a>mouse_wts</span></code></pre></div>
+<pre><code>##  [1] 19.57635 29.59349 23.89572 17.75500 11.47902 29.90031 26.04292 30.18206
+##  [9] 30.28894  8.09662</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="confidence-intervals.html#cb45-1"></a>sample_<span class="dv">1</span></span></code></pre></div>
+<pre><code>##  [1] 19.57635 29.59349 26.04292 30.18206 30.28894 11.47902 26.04292 29.90031
+##  [9] 11.47902 23.89572</code></pre>
+<p>Some of the same numbers do indeed repeat and some numbers do not appear. The mean of the <code>sample_1</code> was 23.848075, this is different to the mean of <code>mouse_wts</code> which was 22.6810432</p>
+<p>We get a different set of numbers and a different mean each time we iterate this process. If we iterate this many times (like thousands, usually) we get a distribution of the parameter of interest, the mean.</p>
+<p>The <code>bootstrap</code> function in the <code>resample</code> package takes care of this for us. We give it the data we want to sample from, the name of the statistic we want to compute (here <code>mean</code>) and the number of replicates to do.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="confidence-intervals.html#cb47-1"></a><span class="kw">library</span>(resample)</span>
+<span id="cb47-2"><a href="confidence-intervals.html#cb47-2"></a>bstrap_estimates &lt;-<span class="st"> </span><span class="kw">bootstrap</span>(mouse_wts, <span class="dt">statistic=</span>mean, <span class="dt">R=</span><span class="dv">10000</span>)</span></code></pre></div>
+<p>We can get the values of the CI with the <code>CI.percentile()</code> function, passing in the lower and upper bound for the CI with the <code>probs</code> argument.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="confidence-intervals.html#cb48-1"></a><span class="kw">CI.percentile</span>(bstrap_estimates, <span class="dt">probs=</span><span class="kw">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code></pre></div>
+<pre><code>##         2.5%   97.5%
+## mean 16.6212 27.9609</code></pre>
+<p>So, this is our 95% CI for the mean of <code>mouse_wts</code>. How does it compare with our earlier computed values? It’s actually really close.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="confidence-intervals.html#cb50-1"></a>left_bound</span></code></pre></div>
+<pre><code>## [1] 17.625</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="confidence-intervals.html#cb52-1"></a>right_bound</span></code></pre></div>
+<pre><code>## [1] 27.73708</code></pre>
+</div>
+<div id="plotting-the-bootstrap-distribution" class="section level2">
+<h2><span class="header-section-number">5.5</span> Plotting the bootstrap distribution</h2>
+<p>We would often want to view the bootstrap distribution to understand the CI of our mean.</p>
+<p>The function returns a complex object and the actual computed values are in the <code>replicates</code> slot which we can get with the <code>$</code> syntax and convert to a data frame and use in a typical plot.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="confidence-intervals.html#cb54-1"></a>results &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(bstrap_estimates<span class="op">$</span>replicates)</span>
+<span id="cb54-2"><a href="confidence-intervals.html#cb54-2"></a><span class="kw">ggplot</span>(results) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb54-3"><a href="confidence-intervals.html#cb54-3"></a><span class="st">  </span><span class="kw">aes</span>(mean, <span class="dt">y=</span>..density..) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb54-4"><a href="confidence-intervals.html#cb54-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;steelblue&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb54-5"><a href="confidence-intervals.html#cb54-5"></a><span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>The histogram shows that most of the bootstrap resample means were around 22, further the distribution is smooth and approaches the Normal distribution, reflecting the underlying data from which the original <code>mouse_wts</code> values were drawn. The sample size of 1000 bootstrap replicates contributes to this and it is clear that the bootstrap CI is reliable as to the position of the mean of the data from which <code>mouse_wts</code> was sampled.</p>
+<p>Bootstrap sampling can be a great way to get a confidence interval, it is particularly useful when we have smallish sample sizes and/or don’t know the background distribution.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="effect-size.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bootstrap-sampling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -42,16 +42,21 @@ The figures are plotted with a red border if _p_ comes up less than 0.05. The th
 
 ![Run 28](fig/file_28.png)
 ![Run 66](fig/file_66.png)
-![Run 88](fig/file_88.png)
+
 
 Look at the different plots for each. It is observable that for all these the barplots look very convincingly different. But in the context with the other plots its clear that they aren't showing the whole of the story (or in fact much of it). The boxplots (top left) do a good job of showing the range and the violin and density plots (bottom row) do a good job of showing the shape. It is only really the point plot (first column, middle row) that reveals the positions of the data points and shows that the conclusion of the _p_ value is likely skewed by one or two points in each sample. Concluding differences on this basis is _really_ unsafe. 
 
 Hence, the conclusion from this is that a range of visualisations is necessary to allow us to have confidence in our _p_ values and understand the shapes of our data. Drawing box plots and sticking to _p_ religiously is going to make us wrong more than we'd like! 
 
-## _ggplot2_ An R package for beautiful visualisations
+## Estimation Statistics 
 
-In this tutorial we are going to use _ggplot2_ a package in R to make some clear, informative, thorough visualisations that will help us with our analysis. Here's an example of the sort of thing you can get from _ggplot_:
+So what can we do about this apparent problem? One strategy is to take a much less hypothesis test-centric approach to statistical analysis and apply other ways of thinking about the problems, instead we can use Estimation Statistics to look at the parameters of our data and get an idea of magnitude of an effect or difference and an associated confidence interval that estimates how believable that estimate is.
 
-![ggplot 2 iris data](fig/sepal-vs-petal-specied.png)
+```{block2, type="sidenote" }
+Hey, isn't all this rationale in the ggplot book?  Umm, it is a bit, yeah! Graphical methods and Estimation Statistics are closely related because plots can show the parameters very well
+```
 
-_ggplot2_ is a library in the R statistical programming language - but we won't be learning to program here. The _gg_ part stands for 'grammar of graphics', and _ggplot2_ is a small grammar that describes plots that should be built on top of data - effectively allowing a user to write their own plot description and have the computer work out what to do, so no programming is needed, just an appreciation of the grammar that is used to describe the plot.
+In this book we'll take a look at some of the main features of Estimation Statistics with the intention that they'll be useful in your future research. The same rule about taking a $p$-value as your only determinant of whether a statistical claim is important or significant applies to the Estimation Statistics we'll learn here. At the end of this book we will examine the integration of the different estimate statistics covered.
+
+
+
