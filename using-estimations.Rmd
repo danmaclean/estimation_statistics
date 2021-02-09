@@ -111,7 +111,7 @@ And the resulting `ci_df` contains the calculated values including the upper and
 
 We can apply the summaries to our existing plot using `geom_errorbar()` and the `data` argument, which will use our new data frame as the data source exclusively for this geom.
 
-Because our new data frame doesn't have the original data in it, we have to turn off the original data mapping `aes()` with the `inherit.aes` argument and rename the $x$ axis and colour in a new `aes()`. We should also set the width of the error bars as they come out comically wide by default.
+Because our new data frame doesn't have the original data in it, we have to turn off the original data mapping `aes()` with the `inherit.aes` argument and rename the $x$ axis and colour in a new `aes()`. We should also set the width of the cross lines at the limits of the error bars as they come out comically wide by default.
 
 ```{r}
 base_plot + geom_errorbar(data = ci_df, inherit.aes = FALSE, aes(x=group, ymax=upper, ymin=lower, colour=group), width=0.25)

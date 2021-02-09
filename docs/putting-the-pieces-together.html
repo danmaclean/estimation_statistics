@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 group2  11.1    10  2.82       1.75  12.8  9.32</code></pre>
 <p>And the resulting <code>ci_df</code> contains the calculated values including the upper and lower values of the CI.</p>
 <p>We can apply the summaries to our existing plot using <code>geom_errorbar()</code> and the <code>data</code> argument, which will use our new data frame as the data source exclusively for this geom.</p>
-<p>Because our new data frame doesn’t have the original data in it, we have to turn off the original data mapping <code>aes()</code> with the <code>inherit.aes</code> argument and rename the <span class="math inline">\(x\)</span> axis and colour in a new <code>aes()</code>. We should also set the width of the error bars as they come out comically wide by default.</p>
+<p>Because our new data frame doesn’t have the original data in it, we have to turn off the original data mapping <code>aes()</code> with the <code>inherit.aes</code> argument and rename the <span class="math inline">\(x\)</span> axis and colour in a new <code>aes()</code>. We should also set the width of the cross lines at the limits of the error bars as they come out comically wide by default.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="putting-the-pieces-together.html#cb59-1"></a>base_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="dt">data =</span> ci_df, <span class="dt">inherit.aes =</span> <span class="ot">FALSE</span>, <span class="kw">aes</span>(<span class="dt">x=</span>group, <span class="dt">ymax=</span>upper, <span class="dt">ymin=</span>lower, <span class="dt">colour=</span>group), <span class="dt">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
 <p><img src="estimation-stats_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>And there we have a clear view of the 95% CI of the means in our groups.</p>
@@ -294,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## =============================================================
 ## 
 ## Good afternoon!
-## The current time is 13:18 pm on Tuesday February 09, 2021.
+## The current time is 13:23 pm on Tuesday February 09, 2021.
 ## 
 ## Dataset    :  mouse_wts
 ## The first five rows are:
@@ -365,13 +365,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb67-2"><a href="putting-the-pieces-together.html#cb67-2"></a></span>
 <span id="cb67-3"><a href="putting-the-pieces-together.html#cb67-3"></a>est_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">estimate</span>(hr_scores, score, strain, <span class="dt">control=</span><span class="st">&quot;control&quot;</span>)</span>
 <span id="cb67-4"><a href="putting-the-pieces-together.html#cb67-4"></a><span class="kw">plot</span>(est_<span class="dv">1</span>)</span></code></pre></div>
-<pre><code>## Picking joint bandwidth of 0.351</code></pre>
+<pre><code>## Picking joint bandwidth of 0.413</code></pre>
 <p><img src="estimation-stats_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p>The resulting bootstrap estimations are performed on ranked data, the ranks are computed automatically for us and the resulting rank mean difference shown as dotted lines. The blue areas of the bootstrap distribution show the 95% CI for the mean rank. The plot is again very clear that the <code>control</code> has lower mean rank than each of the other two <code>strain</code>s but the <code>mild</code> and <code>deadly</code> strains are not much different from each other.</p>
 <p>We can see technical replicates if we have used them by extending the call to estimate to include these explictly and we can plot them by setting the <code>which</code> argument to <code>just_data</code>.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="putting-the-pieces-together.html#cb69-1"></a>est_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">estimate</span>(hr_scores, score, strain, replicate, <span class="dt">control=</span><span class="st">&quot;control&quot;</span>)</span>
 <span id="cb69-2"><a href="putting-the-pieces-together.html#cb69-2"></a><span class="kw">plot</span>(est_<span class="dv">2</span>, <span class="dt">which=</span><span class="st">&quot;just_data&quot;</span>)</span></code></pre></div>
-<pre><code>## Picking joint bandwidth of 0.386</code></pre>
+<pre><code>## Picking joint bandwidth of 0.403</code></pre>
 <p><img src="estimation-stats_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>The plot is clearer now about the spread of scores in different replicates.</p>
 

@@ -277,40 +277,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 4</code></pre>
 <p>Often the result from a function will be more complicated than a simple number object, often it will be a vector (simple list), like from the <code>rnorm()</code> function that returns lists of random numbers</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-fundamentals.html#cb17-1"></a><span class="kw">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
-<pre><code>##   [1]  0.565060641  0.906096797 -0.003955191 -0.522028679 -1.110973391
-##   [6]  0.449733018 -0.002768143  0.991216510 -0.205707913 -0.334933324
-##  [11] -1.773755346 -1.117504668  0.985869877 -0.889417714  0.838500047
-##  [16]  0.019305434  1.093177665  0.007623098 -0.422762644  0.722151730
-##  [21]  0.616047042  1.665342045  1.367857391 -0.915182279 -0.057825523
-##  [26] -0.675045859 -0.667129707 -0.888348571 -0.268024620 -0.599755983
-##  [31] -0.667508447 -0.394292088  0.282666079 -0.571977972 -0.626170863
-##  [36] -0.687310096 -0.631436379 -1.444592828 -1.024260005 -0.131481656
-##  [41]  0.313323051 -1.078379851 -0.356954085  0.478396468 -0.619562785
-##  [46] -0.081196994  1.567830452 -0.713169948 -0.722471053 -0.443058843
-##  [51]  0.520991463 -1.028615514 -1.188978484  0.003909788  0.556386421
-##  [56]  0.384091621  1.012577483 -0.625355958  1.127954561  1.135295905
-##  [61]  0.604793533  0.246530359  0.102569135  0.021243373 -0.007640750
-##  [66] -0.050230655  1.295957694 -0.431262956  0.099731811 -0.097562550
-##  [71] -2.496010203 -0.549393608 -0.555440591 -0.253075815  0.771126925
-##  [76]  1.004491633  1.032616162 -1.044306134 -0.365905525 -0.678185302
-##  [81]  0.121295815  0.740968933 -1.713386056  1.016957414 -0.198954642
-##  [86]  0.459182027  0.620345383 -1.386882159 -0.684580126 -0.331423341
-##  [91] -0.718350432 -1.136534686 -0.222080212 -0.944413798  0.192180416
-##  [96] -1.570722799  0.047182266  0.270094757  0.069927426 -0.314223532</code></pre>
+<pre><code>##   [1] -2.09703020  1.52643211 -0.56871117  0.46387105  0.58069007  1.38667832
+##   [7] -0.53375535  1.63136016 -0.28661709  0.30931523  1.01703226  0.65133327
+##  [13]  0.18048357 -2.07371861 -1.80103679 -0.05203481  0.74659137  0.42142580
+##  [19]  1.27672775  1.56485552 -0.55282278  1.23610714  0.70860981  0.25794946
+##  [25]  0.35629899  0.47787608  0.76473987  2.09830650  0.46956721 -0.81643769
+##  [31]  0.15299169 -1.11780798  0.15865937  0.33648038 -0.81053860  0.04142558
+##  [37] -0.50557212  0.96285339  0.39108314 -0.12058492  0.09191029 -2.23715276
+##  [43] -0.17248138  0.60147104  0.22222670 -0.72167929 -0.40569297 -0.45037386
+##  [49]  2.74678929 -0.20676933 -0.11710538 -1.07375238  0.47638355 -0.47526765
+##  [55]  0.01184724  0.15299666  0.07444762 -0.21274562 -0.84424506  0.87190388
+##  [61]  0.34196544 -1.64395947 -0.82251161  1.48275526  1.98354316  0.22899980
+##  [67] -0.01962209  2.01418936 -0.79393712  0.82332852  0.39734554 -0.70357658
+##  [73]  1.03865727 -0.53316936 -1.83142443  0.57513022 -0.15766156 -0.49406286
+##  [79]  0.18307528  0.49822016  0.07878188  1.35381843 -0.84902980  0.56838351
+##  [85]  0.73539167  0.83526836  0.57226436 -0.48036276 -0.69625309 -0.32220048
+##  [91] -1.26600075 -1.28772400  0.85629580  1.22800152  0.55982429  0.53693318
+##  [97] -1.84705747  0.49705516 -0.64082445 -0.51190452</code></pre>
 <p>We can combine objects, variables and functions to do more complex stuff in R, here’s how we get the mean of 100 random numbers.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-fundamentals.html#cb19-1"></a>numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb19-2"><a href="r-fundamentals.html#cb19-2"></a><span class="kw">mean</span>(numbers)</span></code></pre></div>
-<pre><code>## [1] 0.2009161</code></pre>
+<pre><code>## [1] -0.08706059</code></pre>
 <p>Here we created a vector object with <code>rnorm(100)</code> and assigned it to the variable <code>numbers</code>. We than used the <code>mean()</code> function, passing it the variable <code>numbers</code>. The <code>mean()</code> function returned the mean of the hundred random numbers.</p>
 </div>
 </div>
 <div id="dataframes" class="section level2">
 <h2><span class="header-section-number">3.4</span> Dataframes</h2>
 <p>One of the more common objects that R uses is a dataframe. The dataframe is a rectangular table-like object that contains data, think of it like a spreadsheet tab. Like the spreadsheet, the dataframe has rows and columns, the columns have names and the different columns can have different types of data in. Here’s a little one</p>
-<pre><code>##   names age    score
-## 1 Guido  24  8.17882
-## 2 Marty  45 10.02279
-## 3  Alan  11 56.94249</code></pre>
+<pre><code>##   names age     score
+## 1 Guido  24 87.561516
+## 2 Marty  45 55.548715
+## 3  Alan  11  2.454769</code></pre>
 <p>Usually we get a dataframe by loading in data from an external source or as a result from functions, occasionally we’ll want to hand make one, which can be done with various functions, <code>data.frame</code> being the most common.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-fundamentals.html#cb22-1"></a><span class="kw">data.frame</span>(</span>
 <span id="cb22-2"><a href="r-fundamentals.html#cb22-2"></a>  <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Guido&quot;</span>, <span class="st">&quot;Marty&quot;</span>, <span class="st">&quot;Alan&quot;</span>),</span>
