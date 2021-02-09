@@ -37,4 +37,11 @@ using-a-ci
 confidence-intervals-in-practice
 bootstrap-estimation-of-confidence-intervals
 plotting-the-bootstrap-distribution
-bootstrap-sampling
+putting-the-pieces-together
+incorporating-estimation-statistics-into-plots
+the-box-plot
+adding-a-normal-ci-using-dplyr
+non-normal-cis
+the-gardner-altman-plot
+the-cumming-plot
+derevnina-plots
