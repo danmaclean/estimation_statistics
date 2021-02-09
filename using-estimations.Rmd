@@ -1,10 +1,10 @@
 # Putting the pieces together
 
-Now that we've studied the two main estimation statistics principles - the effect size and the confidence interval, we should start to look at how to apply them in our work. In this chapter we will look at different plots and plot elements that use our computed estimation statistics clearly and we'll look at some English sentences that express concepts like sample differences using estimation statistics as evidence. 
+Now that we've studied the two main estimation statistics principles - the effect size and the confidence interval, we should start to look at how to apply them in our work. In this chapter we will look at different plots and plot elements that use our computed estimation statistics clearly and informatively such that we can draw conclusions without hypothesis tests.
 
 ## Incorporating estimation statistics into plots
 
-You are likely familiar with this sort of plot, it is pretty much the most standard plot around, the bar chart with error bars.
+You are likely familiar with this sort of plot, it is pretty much the most standard plot around, the bar chart with error bars. This one is of our `mouse_wt` data.
 
 ```{r, echo=FALSE, message=FALSE}
 library(ggplot2)
@@ -43,11 +43,13 @@ base_plot <- mouse_wts %>%
 base_plot
 ```
 
-This is much clearer, we can see all the spread of and patterns in the data. This should always be a Now we can look at adding a 95% percent CI of the mean on. First, an approach that _doesn't_ do this.
+This is much clearer, we can see all the spread of and patterns in the data. This sort of dotted plot should always be a first step in plotting your data. 
+
+Let's work towards look at adding a 95% percent CI of the mean on. First, an approach that _doesn't_ do this, but that you might be tempted to use as a shortcut.
 
 ### The Box Plot
 
-A box plot (or more properly a box and whisker plot) is easy to add to a `ggplot`, and it is a great geom for showing features of the data, but it doesn't do a 95% CI of the mean - not quite.
+A box plot (or more properly a box and whisker plot) is easy to add to a `ggplot`, and it is a great geom for showing features of the data like mean and spread, but it doesn't do a 95% CI of the mean - not quite.
 
 Here's a general view of one, not our mouse data.
 
@@ -119,9 +121,9 @@ And there we have a clear view of the 95% CI of the means in our groups.
 
 ### Non Normal CIs
 
-To add a non-normal CI we need to first calculate the CI using bootstrap resampling. This is a semi-involved process, the `dabestR` package makes it easy, so we'll look at using that. We will use it to make two specific types of plot, the Gardner-Altman [@galtman] plot and the Cumming plot [@cumming].
+To add a non-normal CI we need to first calculate the CI using bootstrap resampling. This is a semi-involved process, the `dabestR` package makes it easy, so we'll look at using that. We will use it to make two specific types of plot, the Gardner-Altman [@gardner1986] plot and the Cumming plot [@cumming2012]. So far we've concentrated only on continuous $y$ data, so we will also look at making a Derevnina plot [@derevnina2021], a variant for categoric data, with the `besthr` package. 
 
-## The Gardner-Altman plot
+## The Gardner-Altman Plot
 
 Invented in 1986 by Gardner and Altman, this is a plot for two group continuous data that can show a choice of effect size and the 95% bootstrap CI and distribution in a single panel.
 
@@ -129,6 +131,10 @@ Let's make one with `dabestr`
 
 The first step is to load our `mouse_wts` data into a `dabest` object.  We must specify the $x$ and $y$ variable names and using the `idx` argument, the two groups to be compared. The first group will be considered the base for comparison group. We must also tell the function whether these data are paired or not. 
 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(dabestr)
+```
 ```{r}
 library(dabestr)
 
@@ -155,7 +161,7 @@ This plot is extrememly informative and gives us a super clear indication of our
 
 ## The Cumming Plot
 
-The Cumming plot extends the ideas of the Gardner-Altman plot into more groups and comparisons, named after Cumming who suggested designs like this in his paper [@cumming].
+The Cumming plot extends the ideas of the Gardner-Altman plot into more groups and comparisons, named after Cumming who suggested designs like this in his paper [@cumming2012].
 
 The setup is similar, we will need some data with more groups in it, `mouse_wt_4g`. The othe major difference is that the comparison specification is wrapped in a list of comparisons. 
 
@@ -187,9 +193,9 @@ The plot shows something similar to the Gardner-Altman in a two-panel layout to 
 
 As with the previous plot, this is easy to interpret, rich and informative and convincing. It is clear to see in this plot that the masses of `group1` are substantially and significantly higher than the other groups. We see also that `group2` is not different to `group3` or `group4`, but `group3` and `group4` are different from each other.
 
-## Derevnina Plots
+## The Derevnina Plot
 
-The Gardner-Altman and Cummings plots work really well on continuous $y$ data. As we have discussed before [here](https://danmaclean.github.io/intro_to_stats/non-parametric-tests-and-linear-models.html#common-misrepresentations-of-discrete-data), categorical or discrete data need a different representation. An extension of the ideas here for categoric data in general is the Derevnina plot, which was applied specifically to HR experiment score data in her paper [@derevnina].
+The Gardner-Altman and Cumming plots work really well on continuous $y$ data. As we have discussed before [here](https://danmaclean.github.io/intro_to_stats/non-parametric-tests-and-linear-models.html#common-misrepresentations-of-discrete-data), categorical or discrete data need a different representation. An extension of the ideas here for categoric data in general is the Derevnina plot, which was applied specifically to HR experiment score data in her paper [@derevnina2021].
 
 The basic idea is the same, we have HR score data with e.g strain, replicate and score.
 

@@ -6,7 +6,7 @@ You will already be familiar with the most common effect sizes, these are common
 
 ## Difference in sample means
 
-The most commonly seen effect size is the difference between sample means. Despite the apparent simplicity and to an extent, obviousness, of the difference in the means of two groups this parameter is a very useful tool in determining whether or not a claim of difference or significance is valid or not. 
+The most commonly seen effect size is the difference between sample means. Despite the apparent simplicity and to an extent - obviousness - of the difference in the means of two groups this parameter is a very useful tool in determining whether or not a claim of difference or significance is valid or not. 
 
 One advantage and disadvantage of using the difference in sample means is that to have a good intuition about the claim of significance we must have some prior experience about whether the observed effect size is a big or small one. Large effect sizes are more significant, all other things being equal, but the absolute effect size is highly dependent on the specifics of the domain we are working in. For example 10g weight difference between two groups of adult humans is not going to be seen as significant, however 10g in difference in groups of adult domestic mice is quite large. 
 
@@ -21,7 +21,7 @@ $$\bar{x_i} = \frac{\sum{x_i}}{n_i}$$
 Such that the formula for effect size becomes
 
 $$\bar{x_1} - \bar{x_2}$$
-And $\bar{x}$ is a pretty standard name for a sample mean in the statistical literature.
+And $\bar{x}$ which is pronounce 'x bar' is a pretty standard name for a sample mean in the statistical literature.
 
 ### Standardised Effect Sizes
 
@@ -42,10 +42,10 @@ knitr::kable(
 )
 ```
 
-So if we get a $d$ of 0.7, we have a medium to large effect size.
+So if we get a $d$ of 0.7, we have a medium effect size.
 
-```{block2, type="callout"}
-Computing $s$ is done according to a formula called the pooled standard deviation for two independent samples. If you don't look at lot's of formula it looks a little scary at first glance so I haven't included it here, I mention it just to point out that it _isn't_ the same as adding up the two individual sample standard deviations. 
+```{block2, type="sidenote"}
+Computing $s$ is done according to a formula called the pooled standard deviation for two independent samples. If you don't look at lots of formulae it looks a little scary at first glance so I haven't included it here, I mention it just to point out that it _isn't_ the same as adding up the two individual sample standard deviations. 
 ```
 
 ### Calculating Mean Difference Effect Sizes in Practice
@@ -105,7 +105,7 @@ It is clear to see that the line (and therefore model) fits the data in the left
 
 ### Pearson's $r$
 
-Pearson's $r$ value is one we are likely familiar with from correlation analysis and is a simple effect size we can use with continuous data. It runs from -1 to 1 with values around 0 indicating a smaller effect size and values at -1 or 1 indicating larger effect sizes. The sign (+/-) of $r$ indicates only the nature of the correlation, not the effect sizes, so -0.3 and + 0.3 are equivalently sized negative and positive correlations.
+Pearson's $r$ value is one we are likely familiar with from correlation analysis and is a simple effect size we can use with $x$ and $y$ continuous data. It runs from -1 to 1 with values around 0 indicating a smaller effect size and values at -1 or 1 indicating larger effect sizes. The sign (+/-) of $r$ indicates only the nature of the correlation, not the effect sizes, so -0.3 and + 0.3 are equivalently sized negative and positive correlations.
 
 The value of this effect size is interpreted differently from that of Cohen's $d$, as the values can only run from -1 to 1, here's a brief table of categories
 

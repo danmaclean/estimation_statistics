@@ -2,7 +2,7 @@
 
 ## Confidence Intervals
 
-A confidence interval (CI) is a range estimate of a statistical parameter (a number or measure of some sort) that is computed from the data. It gives a range that the parameter falls in with as certain confidence (the confidence value), so a 95% Confidence Interval of the sample mean tells us the range in which we believe the sample mean will lie.
+A confidence interval (CI) is a range estimate of a statistical parameter (a number or measure of some sort) that is computed from the data. It gives a range that the parameter falls in with a certain confidence (the confidence value), so a 95% Confidence Interval of the sample mean tells us the range in which we believe the sample mean will lie.
 
 We often see them rendered like this
 
@@ -32,11 +32,11 @@ ggplot(xd, aes(x, y)) +
 
 ```
 
-But wait! Isn't the first one error bars? Isn't the second one percentiles of a distribution? That's right, in fact the  visual glyph used for confidence intervals and error bars or confidence intervals and percentiles are the same. This is because they are each a kind of numeric range and we can show them on figures in the same way. We must be careful not confuse them because they seldom show the same thing. To be explicit again confidence intervals show the likely range that a parameter (like a mean) falls in. 
+But wait! Isn't the first one error bars? Isn't the second one percentiles of a distribution? That's right! They might be. In fact the visual glyph used for confidence intervals and error bars or confidence intervals and percentiles are the same. This is because they are each a kind of numeric range and we can show them on figures in the same way. We must be careful not to confuse them because they seldom show the same thing. To be explicit again confidence intervals show the likely range that a parameter (like a mean) falls in. 
 
-Error bars usually show a sample mean plus or minus a fixed number like the standard deviation, but this doesn't necessarily say anything about the confidence we have that the mean falls in that range. 
+Error bars usually show a sample mean plus or minus a fixed number like the standard deviation, so they show us the spread of the data but this doesn't necessarily say anything about the confidence we have that the mean falls in that range. Confidence Intervals are explicit about this.
 
-Similarly, percentiles show how much of the observed data fall in a range, e.g the 10th percentile shows where 10% of the data fall, but it again doesn't necessarily say anything about the confidence we have about where a particular parameter falls.
+Similarly, percentiles show how much of the observed data fall in a range, e.g the 10th percentile shows where 10% of the data fall, but they again don't necessarily say anything about the confidence we have about where a particular parameter falls.
 
 ## Confidence intervals on Normally distributed data
 
@@ -53,7 +53,11 @@ mouse_wts <- rnorm(10, mean = 20, sd = 20 / 3 )
 mouse_wts
 ```
 
-We can use the `qnorm()` function to get the limits of a given CI on a standardised Normal Distribution. We provide the CI size (here we'll use 95%) but because a 95% confidence interval has a total of 5% that must fall outside of each end of the interval, we use half of 5% (2.5%) in the function (and we provide it as a probability to this function so it's 0.975).
+We can use the `qnorm()` function to get the information we need to calculate the limits of a given CI on a standardised Normal Distribution. We don't provide the CI size (that would be too easy!)
+
+Instead we use `qnorm()` to get the value at a given percentile.
+
+As we want a 95% CI and because a 95% confidence interval has a total of 5% that must be equally shared outside of each end of the interval, we use half of 5% (2.5%) as the limit of the percentile. To confuse matters further we must provide it as a probability to this function so the actual percentile we ask for is 0.975.
 
 We can then plug this into a standard formula to get the half width of the CI using the mean and standard deviation of the sample.
 
@@ -100,11 +104,11 @@ xdp <- ggplot(xd) + aes(mass, density)  +
 xdp
 ```
 
-The dotted blue line represents a measurement of a single mouse, the green areas in the density plot are the area's outside the 95% CI we computed. So the specific measurement looks like it wouldn't come from our population very often.
+The dotted blue line represents a measurement of a single mouse, the green areas in the density plot are those outside the 95% CI we computed. So the specific measurement looks like it wouldn't come from our population very often.
 
 ### Confidence Intervals in practice
 
-Of course, looking at the density curve we see that it is not very convincing as the curve of a Normal distribution and the areas outside the CI seem wider than we might have expected from textbook renderings of a Normal distribution. The numbers for mouse weights were drawn randomly from a Normal distribution and the off pattern is due to the small sample size, we only used 10 mouse weight measurement. As a result the estimation of the curve is quite lumpy. Such a phenomenon not only highlights the need for sensibly sized samples but also indicates the importance of careful examination of the data on which we are creating confidence intervals. To repeat our familiar refrain you can't use a single measure on it's own. Other measures should be integrated and confidence intervals are best interpreted along side full representations of the data. Here is the same plot with a histogram that shows more finely the actual data
+Of course, looking at the density curve we see that it is not very convincing as the curve of a Normal distribution and the areas outside the CI seem wider than we might have expected from textbook renderings of a Normal distribution. The numbers for mouse weights were drawn randomly from a Normal distribution and the off pattern is due to the small sample size, we only used 10 mouse weight measurement. As a result the estimation of the curve is quite lumpy. Such a phenomenon not only highlights the need for sensibly sized samples but also indicates the importance of careful examination of the data on which we are creating confidence intervals. To repeat our familiar refrain you can't use a single measure on its own. Other measures should be integrated and confidence intervals are best interpreted along side full representations of the data. Here is the same plot with a histogram that shows more finely the actual data
 
 ```{r, echo=FALSE, message=FALSE}
 ggplot(xd) + aes(mass, density) + 

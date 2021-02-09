@@ -24,7 +24,7 @@
 <meta name="author" content="Dan MacLean" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -141,9 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
@@ -191,9 +191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
 <li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman plot</a></li>
+<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
 <li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#derevnina-plots"><i class="fa fa-check"></i><b>6.4</b> Derevnina Plots</a></li>
+<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -221,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You will already be familiar with the most common effect sizes, these are common metrics like the sample mean difference, the regression coefficient (<span class="math inline">\(r\)</span>) from a regression analysis or the likelihood of an event.</p>
 <div id="difference-in-sample-means" class="section level2">
 <h2><span class="header-section-number">4.1</span> Difference in sample means</h2>
-<p>The most commonly seen effect size is the difference between sample means. Despite the apparent simplicity and to an extent, obviousness, of the difference in the means of two groups this parameter is a very useful tool in determining whether or not a claim of difference or significance is valid or not.</p>
+<p>The most commonly seen effect size is the difference between sample means. Despite the apparent simplicity and to an extent - obviousness - of the difference in the means of two groups this parameter is a very useful tool in determining whether or not a claim of difference or significance is valid or not.</p>
 <p>One advantage and disadvantage of using the difference in sample means is that to have a good intuition about the claim of significance we must have some prior experience about whether the observed effect size is a big or small one. Large effect sizes are more significant, all other things being equal, but the absolute effect size is highly dependent on the specifics of the domain we are working in. For example 10g weight difference between two groups of adult humans is not going to be seen as significant, however 10g in difference in groups of adult domestic mice is quite large.</p>
 <p>If we’re going to be formal about it, then we can write the absolute effect size as follows: Where <span class="math inline">\(n_i\)</span> is the sample size for group <span class="math inline">\(x_i\)</span></p>
 <p><span class="math display">\[\frac{\sum{x_1}}{n_1} - \frac{\sum{x_2}}{n_2}\]</span></p>
@@ -229,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[\bar{x_i} = \frac{\sum{x_i}}{n_i}\]</span></p>
 <p>Such that the formula for effect size becomes</p>
 <p><span class="math display">\[\bar{x_1} - \bar{x_2}\]</span>
-And <span class="math inline">\(\bar{x}\)</span> is a pretty standard name for a sample mean in the statistical literature.</p>
+And <span class="math inline">\(\bar{x}\)</span> which is pronounce ‘x bar’ is a pretty standard name for a sample mean in the statistical literature.</p>
 <div id="standardised-effect-sizes" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Standardised Effect Sizes</h3>
 <p>It would be extremely difficult to say whether even a 100g difference in human weight is as of as great significance as 10g in mice. Given that the real world meaningfulness of the mean sample difference is dependent upon the context we often need a mechanism through which we can compare effect sizes. Standardised effect sizes can help with this, and they work by taking into account the pooled standard deviation of the two samples, expressing the mean difference in terms of the variation in the numbers that make up the mean. If <span class="math inline">\(s\)</span> is the pooled standard deviation then our standardised effect size <span class="math inline">\(d\)</span> is</p>
@@ -270,10 +270,10 @@ Computing this for our mouse and human data would enable us to make reasonable c
 </tr>
 </tbody>
 </table>
-<p>So if we get a <span class="math inline">\(d\)</span> of 0.7, we have a medium to large effect size.</p>
+<p>So if we get a <span class="math inline">\(d\)</span> of 0.7, we have a medium effect size.</p>
 
-<div class="callout">
-Computing <span class="math inline">\(s\)</span> is done according to a formula called the pooled standard deviation for two independent samples. If you don’t look at lot’s of formula it looks a little scary at first glance so I haven’t included it here, I mention it just to point out that it <em>isn’t</em> the same as adding up the two individual sample standard deviations.
+<div class="sidenote">
+Computing <span class="math inline">\(s\)</span> is done according to a formula called the pooled standard deviation for two independent samples. If you don’t look at lots of formulae it looks a little scary at first glance so I haven’t included it here, I mention it just to point out that it <em>isn’t</em> the same as adding up the two individual sample standard deviations.
 </div>
 
 </div>
@@ -318,11 +318,11 @@ Computing <span class="math inline">\(s\)</span> is done according to a formula 
 <h2><span class="header-section-number">4.2</span> Explained variation</h2>
 <p>Another common type of effect size is that computed for correlation style data (like that we see in linear regression models), so when we have a continuous <span class="math inline">\(x\)</span> (explanatory variable) and a response . These effect sizes are based on the amount of the variance that is captured by the model (like a linear model). In other terms we’ve thought about explained variation as the fit to the model.</p>
 <p>We can visualise this in a scatter plot. The greater the explained variation, the better the fit to the line.</p>
-<p><img src="estimation-stats_files/figure-html/unnamed-chunk-24-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-24-2.png" width="50%" /></p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-25-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-25-2.png" width="50%" /></p>
 <p>It is clear to see that the line (and therefore model) fits the data in the left panel much better than the line (model) fits the data in the right panel. The effect size of the better fit model is going to be larger.</p>
 <div id="pearsons-r" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Pearson’s <span class="math inline">\(r\)</span></h3>
-<p>Pearson’s <span class="math inline">\(r\)</span> value is one we are likely familiar with from correlation analysis and is a simple effect size we can use with continuous data. It runs from -1 to 1 with values around 0 indicating a smaller effect size and values at -1 or 1 indicating larger effect sizes. The sign (+/-) of <span class="math inline">\(r\)</span> indicates only the nature of the correlation, not the effect sizes, so -0.3 and + 0.3 are equivalently sized negative and positive correlations.</p>
+<p>Pearson’s <span class="math inline">\(r\)</span> value is one we are likely familiar with from correlation analysis and is a simple effect size we can use with <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> continuous data. It runs from -1 to 1 with values around 0 indicating a smaller effect size and values at -1 or 1 indicating larger effect sizes. The sign (+/-) of <span class="math inline">\(r\)</span> indicates only the nature of the correlation, not the effect sizes, so -0.3 and + 0.3 are equivalently sized negative and positive correlations.</p>
 <p>The value of this effect size is interpreted differently from that of Cohen’s <span class="math inline">\(d\)</span>, as the values can only run from -1 to 1, here’s a brief table of categories</p>
 <table>
 <thead>

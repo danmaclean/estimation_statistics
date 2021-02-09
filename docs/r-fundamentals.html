@@ -24,7 +24,7 @@
 <meta name="author" content="Dan MacLean" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -141,9 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
@@ -191,9 +191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
 <li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman plot</a></li>
+<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
 <li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#derevnina-plots"><i class="fa fa-check"></i><b>6.4</b> Derevnina Plots</a></li>
+<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -277,27 +277,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 4</code></pre>
 <p>Often the result from a function will be more complicated than a simple number object, often it will be a vector (simple list), like from the <code>rnorm()</code> function that returns lists of random numbers</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-fundamentals.html#cb17-1"></a><span class="kw">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
-<pre><code>##   [1] -0.88286876 -0.65228101  1.40995987 -1.43958082  0.19249696 -1.18249060
-##   [7]  0.15475612 -0.38480576 -1.71159110 -0.40194809  0.45916252 -0.58572165
-##  [13]  0.29033204  0.02421489 -0.09330998  0.26180988 -0.28272604 -0.67791571
-##  [19] -0.27484257  0.03480956  0.71841782 -0.97457153 -1.52357502 -0.88842144
-##  [25] -0.47312937 -1.95065236  0.13738977 -0.16265478 -0.20999882  0.87740622
-##  [31] -0.50015766  0.09858753 -0.84457631 -0.23276723  0.02991409 -0.18283916
-##  [37] -0.65202867 -0.07278302 -0.37642139 -0.25389501  0.87283525  0.53969582
-##  [43]  0.42630591  1.37750504 -1.10023182  0.26145547 -0.39671314  0.67446515
-##  [49] -0.09595248 -0.07274435  2.01118377 -1.18650532  0.57491445  0.64735749
-##  [55]  1.21872107 -1.08560292  0.64614316  0.09225471 -1.24207459 -0.15318611
-##  [61]  1.99185104  0.30891929 -0.61421035 -0.09658178 -0.32254928 -1.57545523
-##  [67]  0.83153272  0.01442195  1.03235222  1.27878371 -1.04586275 -0.80308654
-##  [73]  0.36795529 -0.68199283 -1.49530417  0.99830432 -0.13612006 -0.74007339
-##  [79]  1.10589923 -0.45610064 -1.41737412 -1.27608177 -0.33192514  2.28662119
-##  [85] -0.67951206 -0.87251546  2.07917551  0.51583081 -0.47470609 -1.53027683
-##  [91] -0.54626801 -0.90971153 -0.00725556 -1.25223300  0.20937052  0.08119269
-##  [97]  0.47328066  0.04413065 -0.43495327  1.26596729</code></pre>
+<pre><code>##   [1]  0.565060641  0.906096797 -0.003955191 -0.522028679 -1.110973391
+##   [6]  0.449733018 -0.002768143  0.991216510 -0.205707913 -0.334933324
+##  [11] -1.773755346 -1.117504668  0.985869877 -0.889417714  0.838500047
+##  [16]  0.019305434  1.093177665  0.007623098 -0.422762644  0.722151730
+##  [21]  0.616047042  1.665342045  1.367857391 -0.915182279 -0.057825523
+##  [26] -0.675045859 -0.667129707 -0.888348571 -0.268024620 -0.599755983
+##  [31] -0.667508447 -0.394292088  0.282666079 -0.571977972 -0.626170863
+##  [36] -0.687310096 -0.631436379 -1.444592828 -1.024260005 -0.131481656
+##  [41]  0.313323051 -1.078379851 -0.356954085  0.478396468 -0.619562785
+##  [46] -0.081196994  1.567830452 -0.713169948 -0.722471053 -0.443058843
+##  [51]  0.520991463 -1.028615514 -1.188978484  0.003909788  0.556386421
+##  [56]  0.384091621  1.012577483 -0.625355958  1.127954561  1.135295905
+##  [61]  0.604793533  0.246530359  0.102569135  0.021243373 -0.007640750
+##  [66] -0.050230655  1.295957694 -0.431262956  0.099731811 -0.097562550
+##  [71] -2.496010203 -0.549393608 -0.555440591 -0.253075815  0.771126925
+##  [76]  1.004491633  1.032616162 -1.044306134 -0.365905525 -0.678185302
+##  [81]  0.121295815  0.740968933 -1.713386056  1.016957414 -0.198954642
+##  [86]  0.459182027  0.620345383 -1.386882159 -0.684580126 -0.331423341
+##  [91] -0.718350432 -1.136534686 -0.222080212 -0.944413798  0.192180416
+##  [96] -1.570722799  0.047182266  0.270094757  0.069927426 -0.314223532</code></pre>
 <p>We can combine objects, variables and functions to do more complex stuff in R, here’s how we get the mean of 100 random numbers.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-fundamentals.html#cb19-1"></a>numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</span>
 <span id="cb19-2"><a href="r-fundamentals.html#cb19-2"></a><span class="kw">mean</span>(numbers)</span></code></pre></div>
-<pre><code>## [1] 0.04241898</code></pre>
+<pre><code>## [1] 0.2009161</code></pre>
 <p>Here we created a vector object with <code>rnorm(100)</code> and assigned it to the variable <code>numbers</code>. We than used the <code>mean()</code> function, passing it the variable <code>numbers</code>. The <code>mean()</code> function returned the mean of the hundred random numbers.</p>
 </div>
 </div>
@@ -305,9 +308,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> Dataframes</h2>
 <p>One of the more common objects that R uses is a dataframe. The dataframe is a rectangular table-like object that contains data, think of it like a spreadsheet tab. Like the spreadsheet, the dataframe has rows and columns, the columns have names and the different columns can have different types of data in. Here’s a little one</p>
 <pre><code>##   names age    score
-## 1 Guido  24 76.48315
-## 2 Marty  45 29.50785
-## 3  Alan  11 66.91583</code></pre>
+## 1 Guido  24  8.17882
+## 2 Marty  45 10.02279
+## 3  Alan  11 56.94249</code></pre>
 <p>Usually we get a dataframe by loading in data from an external source or as a result from functions, occasionally we’ll want to hand make one, which can be done with various functions, <code>data.frame</code> being the most common.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-fundamentals.html#cb22-1"></a><span class="kw">data.frame</span>(</span>
 <span id="cb22-2"><a href="r-fundamentals.html#cb22-2"></a>  <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Guido&quot;</span>, <span class="st">&quot;Marty&quot;</span>, <span class="st">&quot;Alan&quot;</span>),</span>

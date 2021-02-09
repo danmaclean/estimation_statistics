@@ -24,7 +24,7 @@
 <meta name="author" content="Dan MacLean" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -141,9 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
@@ -191,9 +191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
 <li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman plot</a></li>
+<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
 <li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#derevnina-plots"><i class="fa fa-check"></i><b>6.4</b> Derevnina Plots</a></li>
+<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -223,17 +223,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="summarising-your-data-can-lead-to-wrong-conclusions" class="section level2">
 <h2><span class="header-section-number">2.2</span> Summarising your data can lead to wrong conclusions</h2>
-<p>We all know that when you create a bar chart and put some error bars on it, you’re really only representing two numbers, usually a mean and standard deviation. People create bar plots instinctively, and in doing so can miss important stuff. Look at this figure:</p>
-<p><img src="fig/barplots.png" alt="Weissgerber et al" />
-<em>source:</em> <a href="http://journals.plos.org/plosbiology/article/figure/image?size=large&amp;id=info:doi/10.1371/journal.pbio.1002128.g001">Weissgerber et al</a></p>
-<p>The bar chart in panel A is one that came out of all those sets of numbers in the other panels. But it really hides some important stuff, like the fact the numbers are clearly separating into two groups in panel D, or that the two samples have different sizes in panel E.</p>
+<p>We all know that when you create a bar chart and put some error bars on it, you’re really only representing two numbers, usually a mean and standard deviation. People create bar plots out of habit and without thinking about it, and in doing so can miss important stuff. Look at this figure from <span class="citation">Weissgerber (<a href="#ref-weissgerber2015" role="doc-biblioref">2015</a>)</span>:</p>
+<div class="figure">
+<img src="fig/barplots.png" alt="" />
+<p class="caption">Weissgerber et al</p>
+</div>
+<p>The bar chart in panel A is one that emerges if we use each of those data sets in the other panels. But creating the bar chart really hides some important stuff, like the fact the numbers are clearly separating into two groups in panel D, or that the two samples have different sizes in panel E.</p>
 <p>Worse than any of these is that the significant difference in the t-test is coming from just one point in panel C. From this data set you might be tempted to conclude that there is a significant difference in the two samples and if you relied on the bar chart as a visualisation then you’d never suspect there was something funny.</p>
 <p>Some enthusiastic young science communicators have even started a Kickstarter to lobby journals to stop using, in particular, bar charts! These people, calling themselves Bar Barplots, have a nice video on one of the main problems with bar charts. Have a look at this page on Kickstarter . <a href="https://www.kickstarter.com/projects/1474588473/barbarplots">Kickstarter - Barbarplots</a>, especially this video <a href="https://ksr-video.imgix.net/projects/2453455/video-665338-h264_high.mp4">Kickstarter - Barbarplots video</a>.</p>
 <p>Ignoring your data visualisation and just making bar plots could be an error! It’s important that you spend a little time getting to know, and presenting your data as clearly and thoroughly as possible.</p>
 </div>
 <div id="p---one-value-to-fool-them-all" class="section level2">
 <h2><span class="header-section-number">2.3</span> <em>p</em> - one value to fool them all?</h2>
-<p>But why would you care about this, in the end a <em>p</em>-value won’t a <em>p</em>-value help you see real differences and make this all easy? Sadly, that isn’t true. Let’s do an experiment to test that.</p>
+<p>A lot of researchers get the impression that <span class="math inline">\(t\)</span>-tests, ANOVAs and other hypothesis tests tell you whether something is significant with probability <span class="math inline">\(p\)</span>. This is quite a misinterpretation. They do no such thing. More accurately but still rather informally and in general <span class="math inline">\(p\)</span> can be taken as follows</p>
+
+<div class="myquote">
+<span class="math inline">\(p\)</span> is the likelihood of seeing a difference of the size observed in the Null Model
+</div>
+
+<p>Remembering that the Null Model is the default situation where the difference is 0 then this is resolutely not the same as saying they are definitely different. Just that they’re not likely to be the same. The <span class="math inline">\(p\)</span> in <span class="math inline">\(p\)</span> value is usually taken to mean ‘probability’, but if it stands for anything it should be ‘probably not the same’.</p>
+<p>Hypothesis testing like this has been criticised for being weak inference, and not without reason. All this means is that we need to be awake to the limitations of our methods.</p>
+<p><span class="math inline">\(p\)</span>-values may well be the most abused statisic in the world, and it is probably time to retire it as a go-to statistical tool. In the end won’t a <em>p</em>-value help you see real differences and make this all easy? Sadly, that isn’t true. Let’s do an experiment to test that.</p>
 <div id="ten-thousand-random-numbers" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Ten Thousand Random Numbers</h3>
 <p>Below is a set of figures that show different views of the same set of data. Every frame of the 100 frames shows a different sampling from the same pool of 10,000 random normally distributed numbers.</p>
@@ -243,13 +253,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Step-by-step, here’s how these figures are made.</p>
 <ol style="list-style-type: decimal">
-<li>Generate a pool of 10,000 random numbers (mean 5, sd 1)</li>
+<li>Generate a pool of 10,000 random numbers (mean 5, SD 1)</li>
 <li>From that, select 10 and call it sample 1.</li>
 <li>Select another 10, call it sample 2.</li>
 <li>Draw plots comparing each sample</li>
 <li>Do an independent <em>t</em>-test on the sample 1 and sample 2 to test for significant differences in means.</li>
 </ol>
-<p>The figures are plotted with a red border if <em>p</em> comes up less than 0.05. The thing is, the samples are from the same background pool, so intuitively you might suspect that none should be different from the others. The reason that some of them do is because a <em>p</em> value only states that the difference observed occurs by chance in <em>p</em> of all events, so for 100, we’d expect 5 to be marked out by chance. In this run of the experiment we get three. Here they are:</p>
+<p>The figures are plotted with a red border if <em>p</em> comes up less than 0.05. The thing is, the samples are from the same background pool, so intuitively you might suspect that none should be different from the others. The reason that some of them do is because a <em>p</em> value only states that the difference observed occurs by chance in <em>p</em> of all events, so for 100, we’d expect 5 to be marked out by chance. In this run of the experiment we get three. Here’s a couple:</p>
 <p><img src="fig/file_28.png" alt="Run 28" />
 <img src="fig/file_66.png" alt="Run 66" /></p>
 <p>Look at the different plots for each. It is observable that for all these the barplots look very convincingly different. But in the context with the other plots its clear that they aren’t showing the whole of the story (or in fact much of it). The boxplots (top left) do a good job of showing the range and the violin and density plots (bottom row) do a good job of showing the shape. It is only really the point plot (first column, middle row) that reveals the positions of the data points and shows that the conclusion of the <em>p</em> value is likely skewed by one or two points in each sample. Concluding differences on this basis is <em>really</em> unsafe.</p>
@@ -266,6 +276,12 @@ Hey, isn’t all this rationale in the ggplot book? Umm, it is a bit, yeah! Grap
 
 <p>In this book we’ll take a look at some of the main features of Estimation Statistics with the intention that they’ll be useful in your future research. The same rule about taking a <span class="math inline">\(p\)</span>-value as your only determinant of whether a statistical claim is important or significant applies to the Estimation Statistics we’ll learn here. At the end of this book we will examine the integration of the different estimate statistics covered.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-weissgerber2015">
+<p>Weissgerber, Natasa M. AND Winham, Tracey L. AND Milic. 2015. “Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm.” <em>PLOS Biology</em> 13 (4): 1–10. <a href="https://doi.org/10.1371/journal.pbio.1002128">https://doi.org/10.1371/journal.pbio.1002128</a>.</p>
 </div>
 </div>
             </section>

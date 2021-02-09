@@ -4,9 +4,9 @@ knowledge-prerequisites
 software-prerequisites
 installing-r
 installing-rstudio
-installing-r-packages-in-rstudio.
-standard-packages---devtools
-development-packages---itssl
+installing-r-packages-in-rstudio
+standard-packages
+development-packages
 motivation
 variability-in-measurements
 summarising-your-data-can-lead-to-wrong-conclusions
@@ -44,4 +44,4 @@ adding-a-normal-ci-using-dplyr
 non-normal-cis
 the-gardner-altman-plot
 the-cumming-plot
-derevnina-plots
+the-derevnina-plot

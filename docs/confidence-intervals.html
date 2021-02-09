@@ -24,7 +24,7 @@
 <meta name="author" content="Dan MacLean" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -141,9 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
@@ -191,9 +191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
 <li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman plot</a></li>
+<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
 <li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#derevnina-plots"><i class="fa fa-check"></i><b>6.4</b> Derevnina Plots</a></li>
+<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -219,12 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Topic 5</span> Confidence Intervals</h1>
 <div id="confidence-intervals-1" class="section level2">
 <h2><span class="header-section-number">5.1</span> Confidence Intervals</h2>
-<p>A confidence interval (CI) is a range estimate of a statistical parameter (a number or measure of some sort) that is computed from the data. It gives a range that the parameter falls in with as certain confidence (the confidence value), so a 95% Confidence Interval of the sample mean tells us the range in which we believe the sample mean will lie.</p>
+<p>A confidence interval (CI) is a range estimate of a statistical parameter (a number or measure of some sort) that is computed from the data. It gives a range that the parameter falls in with a certain confidence (the confidence value), so a 95% Confidence Interval of the sample mean tells us the range in which we believe the sample mean will lie.</p>
 <p>We often see them rendered like this</p>
-<p><img src="estimation-stats_files/figure-html/unnamed-chunk-28-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-28-2.png" width="50%" /></p>
-<p>But wait! Isn’t the first one error bars? Isn’t the second one percentiles of a distribution? That’s right, in fact the visual glyph used for confidence intervals and error bars or confidence intervals and percentiles are the same. This is because they are each a kind of numeric range and we can show them on figures in the same way. We must be careful not confuse them because they seldom show the same thing. To be explicit again confidence intervals show the likely range that a parameter (like a mean) falls in.</p>
-<p>Error bars usually show a sample mean plus or minus a fixed number like the standard deviation, but this doesn’t necessarily say anything about the confidence we have that the mean falls in that range.</p>
-<p>Similarly, percentiles show how much of the observed data fall in a range, e.g the 10th percentile shows where 10% of the data fall, but it again doesn’t necessarily say anything about the confidence we have about where a particular parameter falls.</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="estimation-stats_files/figure-html/unnamed-chunk-29-2.png" width="50%" /></p>
+<p>But wait! Isn’t the first one error bars? Isn’t the second one percentiles of a distribution? That’s right! They might be. In fact the visual glyph used for confidence intervals and error bars or confidence intervals and percentiles are the same. This is because they are each a kind of numeric range and we can show them on figures in the same way. We must be careful not to confuse them because they seldom show the same thing. To be explicit again confidence intervals show the likely range that a parameter (like a mean) falls in.</p>
+<p>Error bars usually show a sample mean plus or minus a fixed number like the standard deviation, so they show us the spread of the data but this doesn’t necessarily say anything about the confidence we have that the mean falls in that range. Confidence Intervals are explicit about this.</p>
+<p>Similarly, percentiles show how much of the observed data fall in a range, e.g the 10th percentile shows where 10% of the data fall, but they again don’t necessarily say anything about the confidence we have about where a particular parameter falls.</p>
 </div>
 <div id="confidence-intervals-on-normally-distributed-data" class="section level2">
 <h2><span class="header-section-number">5.2</span> Confidence intervals on Normally distributed data</h2>
@@ -233,7 +233,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="confidence-intervals.html#cb36-1"></a>mouse_wts</span></code></pre></div>
 <pre><code>##  [1] 19.57635 29.59349 23.89572 17.75500 11.47902 29.90031 26.04292 30.18206
 ##  [9] 30.28894  8.09662</code></pre>
-<p>We can use the <code>qnorm()</code> function to get the limits of a given CI on a standardised Normal Distribution. We provide the CI size (here we’ll use 95%) but because a 95% confidence interval has a total of 5% that must fall outside of each end of the interval, we use half of 5% (2.5%) in the function (and we provide it as a probability to this function so it’s 0.975).</p>
+<p>We can use the <code>qnorm()</code> function to get the information we need to calculate the limits of a given CI on a standardised Normal Distribution. We don’t provide the CI size (that would be too easy!)</p>
+<p>Instead we use <code>qnorm()</code> to get the value at a given percentile.</p>
+<p>As we want a 95% CI and because a 95% confidence interval has a total of 5% that must be equally shared outside of each end of the interval, we use half of 5% (2.5%) as the limit of the percentile. To confuse matters further we must provide it as a probability to this function so the actual percentile we ask for is 0.975.</p>
 <p>We can then plug this into a standard formula to get the half width of the CI using the mean and standard deviation of the sample.</p>
 <p>Finally, we can add and subtract this value from the sample mean to get the lower and upper bounds of the CI we want.</p>
 <p>This isn’t quite as complicated as it reads, here’s the code</p>
@@ -258,12 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now that we have a CI constructed we can use it. One fact about CIs calculated on a sample is that the true mean of the population (E.G the weights of all mice in the world, not just the ones we sampled) falls within an <span class="math inline">\(x\)</span>% CI <span class="math inline">\(x\)</span>% of the time. We can use this fact to estimate whether another measurement like the mean of another sample falls within a CI. If it <em>doesn’t</em> then we can say the mean of the second sample only occurs in samples from the population (100 - <span class="math inline">\(x\)</span>%) of the time. So if another sample mean falls outside of our 95% CI we can say that two samples with means this far apart only occur by chance less than 5% of the time.</p>
 <p>This is actually analogous to how a hypothesis test works, particularly <span class="math inline">\(t\)</span>-tests. So the interpretation of a difference in populations is analogous.</p>
 <p>Here’s a graphical representation of that on our mouse data</p>
-<p><img src="estimation-stats_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<p>The dotted blue line represents a measurement of a single mouse, the green areas in the density plot are the area’s outside the 95% CI we computed. So the specific measurement looks like it wouldn’t come from our population very often.</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>The dotted blue line represents a measurement of a single mouse, the green areas in the density plot are those outside the 95% CI we computed. So the specific measurement looks like it wouldn’t come from our population very often.</p>
 <div id="confidence-intervals-in-practice" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Confidence Intervals in practice</h3>
-<p>Of course, looking at the density curve we see that it is not very convincing as the curve of a Normal distribution and the areas outside the CI seem wider than we might have expected from textbook renderings of a Normal distribution. The numbers for mouse weights were drawn randomly from a Normal distribution and the off pattern is due to the small sample size, we only used 10 mouse weight measurement. As a result the estimation of the curve is quite lumpy. Such a phenomenon not only highlights the need for sensibly sized samples but also indicates the importance of careful examination of the data on which we are creating confidence intervals. To repeat our familiar refrain you can’t use a single measure on it’s own. Other measures should be integrated and confidence intervals are best interpreted along side full representations of the data. Here is the same plot with a histogram that shows more finely the actual data</p>
-<p><img src="estimation-stats_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>Of course, looking at the density curve we see that it is not very convincing as the curve of a Normal distribution and the areas outside the CI seem wider than we might have expected from textbook renderings of a Normal distribution. The numbers for mouse weights were drawn randomly from a Normal distribution and the off pattern is due to the small sample size, we only used 10 mouse weight measurement. As a result the estimation of the curve is quite lumpy. Such a phenomenon not only highlights the need for sensibly sized samples but also indicates the importance of careful examination of the data on which we are creating confidence intervals. To repeat our familiar refrain you can’t use a single measure on its own. Other measures should be integrated and confidence intervals are best interpreted along side full representations of the data. Here is the same plot with a histogram that shows more finely the actual data</p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>We can see from the histogram that the data are pretty gappy. Most bins have just one measurement in them (see the right hand scale), so the sparse sampling makes our curve density plot of the data less Normal looking. Putting the histogram data on with the confidence interval gives a much clearer view of the data and improves the interpretability of the data.</p>
 </div>
 </div>
@@ -318,7 +320,7 @@ This ‘magic’ step is where bootstrapping gets its name from - the phrase “
 <span id="cb54-3"><a href="confidence-intervals.html#cb54-3"></a><span class="st">  </span><span class="kw">aes</span>(mean, <span class="dt">y=</span>..density..) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb54-4"><a href="confidence-intervals.html#cb54-4"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">colour=</span><span class="st">&quot;steelblue&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb54-5"><a href="confidence-intervals.html#cb54-5"></a><span class="st">  </span><span class="kw">geom_density</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
-<p><img src="estimation-stats_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="estimation-stats_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <p>The histogram shows that most of the bootstrap resample means were around 22, further the distribution is smooth and approaches the Normal distribution, reflecting the underlying data from which the original <code>mouse_wts</code> values were drawn. The sample size of 1000 bootstrap replicates contributes to this and it is clear that the bootstrap CI is reliable as to the position of the mean of the data from which <code>mouse_wts</code> was sampled.</p>
 <p>Bootstrap sampling can be a great way to get a confidence interval, it is particularly useful when we have smallish sample sizes and/or don’t know the background distribution.</p>
 

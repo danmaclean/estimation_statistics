@@ -24,7 +24,7 @@
 <meta name="author" content="Dan MacLean" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -141,9 +141,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio."><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio.</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages---devtools"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages - <code>devtools</code></a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages---itssl"><i class="fa fa-check"></i><b>1.4.2</b> Development packages - itssl</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
@@ -191,9 +191,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
 <li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman plot</a></li>
+<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
 <li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#derevnina-plots"><i class="fa fa-check"></i><b>6.4</b> Derevnina Plots</a></li>
+<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -218,7 +218,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Estimation Statistics</h1>
 <p class="author"><em>Dan MacLean</em></p>
-<p class="date"><em>2021-02-08</em></p>
+<p class="date"><em>2021-02-09</em></p>
 </div>
 <div id="setting-up" class="section level1">
 <h1><span class="header-section-number">Topic 1</span> Setting up</h1>
@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Prerequisites</h2>
 <div id="knowledge-prerequisites" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Knowledge prerequisites</h3>
-<p>There are no specific knowledge prerequisites for this book but it will help if you have read and worked through the <code>ggplot</code> and <code>Intro to Stats</code> books and are familiar with R use.</p>
+<p>There are no specific knowledge prerequisites for this book but it will be very helpful if you have read and worked through the <code>ggplot</code> and <code>Intro to Stats</code> books and are familiar with R use.</p>
 </div>
 <div id="software-prerequisites" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Software prerequisites</h3>
@@ -236,7 +236,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>R</li>
 <li>RStudio</li>
-<li>Some R packages: <code>devtools</code> and <code>besthr</code></li>
+<li>Some R packages: <code>tidyverse</code>, <code>effectsize</code>, <code>resample</code>, <code>dabestr</code>,<code>devtools</code> and <code>besthr</code></li>
 </ol>
 </div>
 </div>
@@ -248,20 +248,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.3</span> Installing RStudio</h2>
 <p>Follow this link and install the right version for your operating system <a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></p>
 </div>
-<div id="installing-r-packages-in-rstudio." class="section level2">
-<h2><span class="header-section-number">1.4</span> Installing R packages in RStudio.</h2>
-<div id="standard-packages---devtools" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> Standard packages - <code>devtools</code></h3>
-<p><code>devtools</code> is a standard R package and can be installed like any other you may have done from CRAN. Start RStudio and use the <code>Packages</code> tab in lower right panel. Click the install button (top left of the panel) and enter the package name, then click install as in this picture</p>
-<div class="figure">
-<img src="fig/package_install.png" alt="" />
-<p class="caption">Installing Packages</p>
+<div id="installing-r-packages-in-rstudio" class="section level2">
+<h2><span class="header-section-number">1.4</span> Installing R packages in RStudio</h2>
+<div id="standard-packages" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Standard packages</h3>
+<p>In the RStudio console, type</p>
+<p><code>install.packages(c("tidyverse", "effectsize", "resample", "dabestr","devtools"))</code></p>
+<p>and the packages should install.</p>
 </div>
-<p>In the same way, you should install <code>effectsize</code>.</p>
-</div>
-<div id="development-packages---itssl" class="section level3">
-<h3><span class="header-section-number">1.4.2</span> Development packages - itssl</h3>
-<p><code>itssl</code> is a new package that contains all the materials including the exercises for this handbook. As it is a development package you need to install it using <code>devtools</code>.</p>
+<div id="development-packages" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Development packages</h3>
+<p><code>besthr</code> is a new package that needs to be installed from the source.</p>
 <ol style="list-style-type: decimal">
 <li>In the <code>Console</code> tab in the lower left panel of RStudio type <code>devtools::install_github("danmaclean/besthr")</code></li>
 </ol>
