@@ -2,3 +2,4 @@
 *.log
 .Rproj.user
 .Rhistory
+/.quarto/

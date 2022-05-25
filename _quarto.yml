@@ -1,0 +1,29 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Estimation Statistics"
+  author: "Dan MacLean"
+  date: "May 2022"
+  search: true
+  downloads: [pdf]
+  sharing: [twitter, facebook]
+  chapters: 
+    - index.qmd
+    - 01-effect-sizes.qmd
+    - 02-confidence-intervals.qmd
+    - 03-using-estimations.qmd
+  appendices:
+    - prerequisites.qmd
+    - r-fundamentals.qmd
+
+bibliography: book.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+comments:
+  hypothesis: true
