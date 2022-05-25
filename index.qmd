@@ -70,9 +70,9 @@ So what can we do about this apparent problem? One strategy is to take a much le
 :::{.callout-note}
 ## Are you repeating this?
 Hey, isn't all this rationale in the ggplot book?  Umm, it is a bit, yeah! Graphical methods and Estimation Statistics are closely related because plots can show the parameters very well
-```
+:::
 
-In this book we'll take a look at some of the main features of Estimation Statistics with the intention that they'll be useful in your future research. The same rule about taking a $p$-value as your only determinant of whether a statistical claim is important or significant applies to the Estimation Statistics we'll learn here. At the end of this book we will examine the integration of the different estimate statistics covered.
+In this course we'll take a look at some of the main features of Estimation Statistics with the intention that they'll be useful in your future research. The same rule about taking a $p$-value as your only determinant of whether a statistical claim is important or significant applies to the Estimation Statistics we'll learn here. At the end of this book we will examine the integration of the different estimate statistics covered.
 
-
+## References
 
