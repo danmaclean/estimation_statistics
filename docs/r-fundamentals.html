@@ -1,71 +1,33 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 3 R Fundamentals | Estimation Statistics</title>
-  <meta name="description" content="Topic 3 R Fundamentals | Estimation Statistics" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.387">
 
-  <meta property="og:title" content="Topic 3 R Fundamentals | Estimation Statistics" />
-  <meta property="og:type" content="book" />
-  
-  
-  
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 3 R Fundamentals | Estimation Statistics" />
-  
-  
-  
-
-<meta name="author" content="Dan MacLean" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<meta name="date" content="2021-02-09" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="motivation.html"/>
-<link rel="next" href="effect-size.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+<title>Estimation Statistics - R Fundamentals</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +47,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,114 +80,185 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./prerequisites.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+
 </head>
 
-<body>
+<body class="nav-sidebar floating">
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">An Estimation Statistics Primer</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Setting up</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#knowledge-prerequisites"><i class="fa fa-check"></i><b>1.1.1</b> Knowledge prerequisites</a></li>
-<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#software-prerequisites"><i class="fa fa-check"></i><b>1.1.2</b> Software prerequisites</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installing-r"><i class="fa fa-check"></i><b>1.2</b> Installing R</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#installing-rstudio"><i class="fa fa-check"></i><b>1.3</b> Installing RStudio</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#installing-r-packages-in-rstudio"><i class="fa fa-check"></i><b>1.4</b> Installing R packages in RStudio</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#standard-packages"><i class="fa fa-check"></i><b>1.4.1</b> Standard packages</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#development-packages"><i class="fa fa-check"></i><b>1.4.2</b> Development packages</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i><b>2</b> Motivation</a><ul>
-<li class="chapter" data-level="2.1" data-path="motivation.html"><a href="motivation.html#variability-in-measurements"><i class="fa fa-check"></i><b>2.1</b> Variability in measurements</a></li>
-<li class="chapter" data-level="2.2" data-path="motivation.html"><a href="motivation.html#summarising-your-data-can-lead-to-wrong-conclusions"><i class="fa fa-check"></i><b>2.2</b> Summarising your data can lead to wrong conclusions</a></li>
-<li class="chapter" data-level="2.3" data-path="motivation.html"><a href="motivation.html#p---one-value-to-fool-them-all"><i class="fa fa-check"></i><b>2.3</b> <em>p</em> - one value to fool them all?</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="motivation.html"><a href="motivation.html#ten-thousand-random-numbers"><i class="fa fa-check"></i><b>2.3.1</b> Ten Thousand Random Numbers</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="motivation.html"><a href="motivation.html#estimation-statistics"><i class="fa fa-check"></i><b>2.4</b> Estimation Statistics</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="r-fundamentals.html"><a href="r-fundamentals.html"><i class="fa fa-check"></i><b>3</b> R Fundamentals</a><ul>
-<li class="chapter" data-level="3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#about-this-chapter"><i class="fa fa-check"></i><b>3.1</b> About this chapter</a></li>
-<li class="chapter" data-level="3.2" data-path="r-fundamentals.html"><a href="r-fundamentals.html#working-with-r"><i class="fa fa-check"></i><b>3.2</b> Working with R</a></li>
-<li class="chapter" data-level="3.3" data-path="r-fundamentals.html"><a href="r-fundamentals.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-objects-and-functions"><i class="fa fa-check"></i><b>3.3.1</b> Using objects and functions</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="r-fundamentals.html"><a href="r-fundamentals.html#dataframes"><i class="fa fa-check"></i><b>3.4</b> Dataframes</a></li>
-<li class="chapter" data-level="3.5" data-path="r-fundamentals.html"><a href="r-fundamentals.html#packages"><i class="fa fa-check"></i><b>3.5</b> Packages</a></li>
-<li class="chapter" data-level="3.6" data-path="r-fundamentals.html"><a href="r-fundamentals.html#using-r-help"><i class="fa fa-check"></i><b>3.6</b> Using R Help</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="effect-size.html"><a href="effect-size.html"><i class="fa fa-check"></i><b>4</b> Effect Size</a><ul>
-<li class="chapter" data-level="4.1" data-path="effect-size.html"><a href="effect-size.html#difference-in-sample-means"><i class="fa fa-check"></i><b>4.1</b> Difference in sample means</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="effect-size.html"><a href="effect-size.html#standardised-effect-sizes"><i class="fa fa-check"></i><b>4.1.1</b> Standardised Effect Sizes</a></li>
-<li class="chapter" data-level="4.1.2" data-path="effect-size.html"><a href="effect-size.html#calculating-mean-difference-effect-sizes-in-practice"><i class="fa fa-check"></i><b>4.1.2</b> Calculating Mean Difference Effect Sizes in Practice</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="effect-size.html"><a href="effect-size.html#explained-variation"><i class="fa fa-check"></i><b>4.2</b> Explained variation</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="effect-size.html"><a href="effect-size.html#pearsons-r"><i class="fa fa-check"></i><b>4.2.1</b> Pearson’s <span class="math inline">\(r\)</span></a></li>
-<li class="chapter" data-level="4.2.2" data-path="effect-size.html"><a href="effect-size.html#r2"><i class="fa fa-check"></i><b>4.2.2</b> <span class="math inline">\(r^2\)</span></a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="effect-size.html"><a href="effect-size.html#using-the-effect-size"><i class="fa fa-check"></i><b>4.3</b> Using the effect size</a></li>
-<li class="chapter" data-level="4.4" data-path="effect-size.html"><a href="effect-size.html#the-assumptions-of-effect-sizes"><i class="fa fa-check"></i><b>4.4</b> The assumptions of effect sizes</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="confidence-intervals.html"><a href="confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Confidence Intervals</a><ul>
-<li class="chapter" data-level="5.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-1"><i class="fa fa-check"></i><b>5.1</b> Confidence Intervals</a></li>
-<li class="chapter" data-level="5.2" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-on-normally-distributed-data"><i class="fa fa-check"></i><b>5.2</b> Confidence intervals on Normally distributed data</a></li>
-<li class="chapter" data-level="5.3" data-path="confidence-intervals.html"><a href="confidence-intervals.html#using-a-ci"><i class="fa fa-check"></i><b>5.3</b> Using a CI</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="confidence-intervals.html"><a href="confidence-intervals.html#confidence-intervals-in-practice"><i class="fa fa-check"></i><b>5.3.1</b> Confidence Intervals in practice</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="confidence-intervals.html"><a href="confidence-intervals.html#bootstrap-estimation-of-confidence-intervals"><i class="fa fa-check"></i><b>5.4</b> Bootstrap Estimation of Confidence Intervals</a></li>
-<li class="chapter" data-level="5.5" data-path="confidence-intervals.html"><a href="confidence-intervals.html#plotting-the-bootstrap-distribution"><i class="fa fa-check"></i><b>5.5</b> Plotting the bootstrap distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html"><i class="fa fa-check"></i><b>6</b> Putting the pieces together</a><ul>
-<li class="chapter" data-level="6.1" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#incorporating-estimation-statistics-into-plots"><i class="fa fa-check"></i><b>6.1</b> Incorporating estimation statistics into plots</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-box-plot"><i class="fa fa-check"></i><b>6.1.1</b> The Box Plot</a></li>
-<li class="chapter" data-level="6.1.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#adding-a-normal-ci-using-dplyr"><i class="fa fa-check"></i><b>6.1.2</b> Adding a Normal CI using dplyr</a></li>
-<li class="chapter" data-level="6.1.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#non-normal-cis"><i class="fa fa-check"></i><b>6.1.3</b> Non Normal CIs</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-gardner-altman-plot"><i class="fa fa-check"></i><b>6.2</b> The Gardner-Altman Plot</a></li>
-<li class="chapter" data-level="6.3" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-cumming-plot"><i class="fa fa-check"></i><b>6.3</b> The Cumming Plot</a></li>
-<li class="chapter" data-level="6.4" data-path="putting-the-pieces-together.html"><a href="putting-the-pieces-together.html#the-derevnina-plot"><i class="fa fa-check"></i><b>6.4</b> The Derevnina Plot</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-</ul>
-
-      </nav>
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">R Fundamentals</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
     </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Estimation Statistics</a>
-          </h1>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estimation Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Estimation-Statistics.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
         </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Motivation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-effect-sizes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Effect Size</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-confidence-intervals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-using-estimations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Putting the pieces together</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">Setting up</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-fundamentals.html" class="sidebar-item-text sidebar-link active">R Fundamentals</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#about-this-chapter" id="toc-about-this-chapter" class="nav-link active" data-scroll-target="#about-this-chapter">About this chapter</a></li>
+  <li><a href="#working-with-r" id="toc-working-with-r" class="nav-link" data-scroll-target="#working-with-r">Working with R</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a>
+  <ul class="collapse">
+  <li><a href="#using-objects-and-functions" id="toc-using-objects-and-functions" class="nav-link" data-scroll-target="#using-objects-and-functions">Using objects and functions</a></li>
+  </ul></li>
+  <li><a href="#dataframes" id="toc-dataframes" class="nav-link" data-scroll-target="#dataframes">Dataframes</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#using-r-help" id="toc-using-r-help" class="nav-link" data-scroll-target="#using-r-help">Using R Help</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
 
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">R Fundamentals</h1>
+</div>
 
-            <section class="normal" id="section-">
-<div id="r-fundamentals" class="section level1">
-<h1><span class="header-section-number">Topic 3</span> R Fundamentals</h1>
-<div id="about-this-chapter" class="section level2">
-<h2><span class="header-section-number">3.1</span> About this chapter</h2>
-<ol style="list-style-type: decimal">
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="about-this-chapter" class="level2">
+<h2 class="anchored" data-anchor-id="about-this-chapter">About this chapter</h2>
+<ol type="1">
 <li>Questions:</li>
 </ol>
 <ul>
 <li>How do I use R?</li>
 </ul>
-<ol start="2" style="list-style-type: decimal">
+<ol start="2" type="1">
 <li>Objectives:</li>
 </ol>
 <ul>
@@ -233,181 +266,271 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Understand the concepts of objects and assignment</li>
 <li>Get exposed to a few functions</li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
+<ol start="3" type="1">
 <li>Keypoints:</li>
 </ol>
 <ul>
 <li>R’s capabilities are provided by functions</li>
 <li>R users call functions and get results</li>
 </ul>
-</div>
-<div id="working-with-r" class="section level2">
-<h2><span class="header-section-number">3.2</span> Working with R</h2>
+</section>
+<section id="working-with-r" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-r">Working with R</h2>
 <p>In this workshop we’ll use R in the extremely useful RStudio software. For the most part we’ll work interactively, meaning we’ll type stuff straight into the R console in RStudio (Usually this is a window on the left or lower left) and get our results there too (usually in the console or in a window on the right).</p>
 <p>Panels like the ones below mimic the interaction with R and first show the thing to type into R, and below the calculated result from R.</p>
 <p>Let’s look at how R works by using it for it’s most basic job - as a calculator:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="r-fundamentals.html#cb1-1"></a> <span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="r-fundamentals.html#cb3-1"></a> <span class="dv">12</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
-<pre><code>## [1] 24</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="r-fundamentals.html#cb5-1"></a> <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
-<pre><code>## [1] 0.3333333</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-fundamentals.html#cb7-1"></a> <span class="dv">12</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
-<pre><code>## [1] 24</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">12</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3333333</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a> <span class="dv">12</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+</div>
 <p>Fairly straightforward, we type in the expression and we get a result. That’s how this whole book will work, you type the stuff in, and get answers out. It’ll be easiest to learn if you go ahead and copy the examples one by one. Try to resist the urge to use copy and paste. Typing longhand really encourages you to look at what you’re entering.</p>
 <p>As far as the R output itself goes, it’s really straightforward - its just the answer with a <code>[1]</code> stuck on the front. This <code>[1]</code> tells us how many items through the output we are. Often R will return long lists of numbers and it can be helpful to have this extra information.</p>
-</div>
-<div id="variables" class="section level2">
-<h2><span class="header-section-number">3.3</span> Variables</h2>
+</section>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
 <p>We can save the output of operations for later use by giving it a name using the assignment symbol <code>&lt;-</code>. Read this symbol as ‘gets’, so <code>x &lt;- 5</code> reads as ‘x gets 5’. These names are called variables, because the value they are associated with can change.</p>
 <p>Let’s give five a name, <code>x</code> then refer to the value 5 by it’s name. We can then use the name in place of the value. In the jargon of computing we say we are assigning a value to a variable.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-fundamentals.html#cb9-1"></a> x &lt;-<span class="st"> </span><span class="dv">5</span></span>
-<span id="cb9-2"><a href="r-fundamentals.html#cb9-2"></a> x</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-fundamentals.html#cb11-1"></a> x <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span></code></pre></div>
-<pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-fundamentals.html#cb13-1"></a>y &lt;-<span class="st"> </span><span class="dv">3</span></span>
-<span id="cb13-2"><a href="r-fundamentals.html#cb13-2"></a>x <span class="op">*</span><span class="st"> </span>y</span></code></pre></div>
-<pre><code>## [1] 15</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a> x <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">*</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
 <p>This is of course of limited value with just numbers but is of great value when we have large datasets, as the whole thing can be referred to by the variable.</p>
-<div id="using-objects-and-functions" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Using objects and functions</h3>
+<section id="using-objects-and-functions" class="level3">
+<h3 class="anchored" data-anchor-id="using-objects-and-functions">Using objects and functions</h3>
 <p>At the top level, R is a simple language with two types of thing: functions and objects. As a user you will use functions to do stuff, and get back objects as an answer. Functions are easy to spot, they are a name followed by a pair of brackets. A function like <code>mean()</code> is the function for calculating a mean. The options (or arguments) for the function go inside the brackets:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-fundamentals.html#cb15-1"></a><span class="kw">sqrt</span>(<span class="dv">16</span>)</span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
 <p>Often the result from a function will be more complicated than a simple number object, often it will be a vector (simple list), like from the <code>rnorm()</code> function that returns lists of random numbers</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-fundamentals.html#cb17-1"></a><span class="kw">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
-<pre><code>##   [1] -2.09703020  1.52643211 -0.56871117  0.46387105  0.58069007  1.38667832
-##   [7] -0.53375535  1.63136016 -0.28661709  0.30931523  1.01703226  0.65133327
-##  [13]  0.18048357 -2.07371861 -1.80103679 -0.05203481  0.74659137  0.42142580
-##  [19]  1.27672775  1.56485552 -0.55282278  1.23610714  0.70860981  0.25794946
-##  [25]  0.35629899  0.47787608  0.76473987  2.09830650  0.46956721 -0.81643769
-##  [31]  0.15299169 -1.11780798  0.15865937  0.33648038 -0.81053860  0.04142558
-##  [37] -0.50557212  0.96285339  0.39108314 -0.12058492  0.09191029 -2.23715276
-##  [43] -0.17248138  0.60147104  0.22222670 -0.72167929 -0.40569297 -0.45037386
-##  [49]  2.74678929 -0.20676933 -0.11710538 -1.07375238  0.47638355 -0.47526765
-##  [55]  0.01184724  0.15299666  0.07444762 -0.21274562 -0.84424506  0.87190388
-##  [61]  0.34196544 -1.64395947 -0.82251161  1.48275526  1.98354316  0.22899980
-##  [67] -0.01962209  2.01418936 -0.79393712  0.82332852  0.39734554 -0.70357658
-##  [73]  1.03865727 -0.53316936 -1.83142443  0.57513022 -0.15766156 -0.49406286
-##  [79]  0.18307528  0.49822016  0.07878188  1.35381843 -0.84902980  0.56838351
-##  [85]  0.73539167  0.83526836  0.57226436 -0.48036276 -0.69625309 -0.32220048
-##  [91] -1.26600075 -1.28772400  0.85629580  1.22800152  0.55982429  0.53693318
-##  [97] -1.84705747  0.49705516 -0.64082445 -0.51190452</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] -0.15209980  0.68591116 -0.21369747 -0.45931039 -1.93058129  1.45656042
+  [7]  0.44140702  0.63642135  0.06175731  0.47085836 -0.53637091  0.97891236
+ [13]  0.51166993  1.43903646  0.25891265  0.33384817 -1.42233766 -1.01508370
+ [19]  0.80164790 -1.68201242  0.42585277  1.86957161  1.34274922 -1.99661458
+ [25]  1.65307157  0.41632434 -0.68256581  0.63887891 -2.17764415 -1.06168832
+ [31]  1.35918560  0.93675500 -0.45208767 -0.62326070 -0.24366131 -1.58237812
+ [37] -0.10998810 -1.53838070  0.90027382 -0.35374404 -0.82059338  0.41595896
+ [43]  0.47658188 -0.73060032  0.38273313  0.78052666 -0.94712502  0.19342128
+ [49]  1.45953003 -0.67752585 -0.74748276 -0.03586392  0.52110458 -0.88160526
+ [55] -0.43770773  0.74479849 -1.27296487  0.75837639  0.15795694 -0.30927187
+ [61]  1.16429095  1.04597987 -0.55072675  0.30374931  0.76961289 -1.31511470
+ [67]  0.10964053  0.20304750  0.48503506 -0.12226269 -1.20422015 -1.33764825
+ [73] -0.48916890 -0.07688745 -0.28559153  1.66687969 -0.61988175  0.81254075
+ [79]  0.05912918 -0.85190206  0.95343119 -0.09817510  0.10283274 -0.52402392
+ [85]  0.83822229  0.16360834  0.89706630  1.50936630  2.57174658  0.35026019
+ [91] -0.19281855  1.75128697 -0.38081799  0.22666181  2.01656492  0.05288872
+ [97]  0.74429368  1.30341702 -1.00470569 -0.72178116</code></pre>
+</div>
+</div>
 <p>We can combine objects, variables and functions to do more complex stuff in R, here’s how we get the mean of 100 random numbers.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-fundamentals.html#cb19-1"></a>numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb19-2"><a href="r-fundamentals.html#cb19-2"></a><span class="kw">mean</span>(numbers)</span></code></pre></div>
-<pre><code>## [1] -0.08706059</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.2073077</code></pre>
+</div>
+</div>
 <p>Here we created a vector object with <code>rnorm(100)</code> and assigned it to the variable <code>numbers</code>. We than used the <code>mean()</code> function, passing it the variable <code>numbers</code>. The <code>mean()</code> function returned the mean of the hundred random numbers.</p>
-</div>
-</div>
-<div id="dataframes" class="section level2">
-<h2><span class="header-section-number">3.4</span> Dataframes</h2>
+</section>
+</section>
+<section id="dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="dataframes">Dataframes</h2>
 <p>One of the more common objects that R uses is a dataframe. The dataframe is a rectangular table-like object that contains data, think of it like a spreadsheet tab. Like the spreadsheet, the dataframe has rows and columns, the columns have names and the different columns can have different types of data in. Here’s a little one</p>
-<pre><code>##   names age     score
-## 1 Guido  24 87.561516
-## 2 Marty  45 55.548715
-## 3  Alan  11  2.454769</code></pre>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  names age    score
+1 Guido  24 30.40198
+2 Marty  45 98.70293
+3  Alan  11 26.89039</code></pre>
+</div>
+</div>
 <p>Usually we get a dataframe by loading in data from an external source or as a result from functions, occasionally we’ll want to hand make one, which can be done with various functions, <code>data.frame</code> being the most common.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-fundamentals.html#cb22-1"></a><span class="kw">data.frame</span>(</span>
-<span id="cb22-2"><a href="r-fundamentals.html#cb22-2"></a>  <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Guido&quot;</span>, <span class="st">&quot;Marty&quot;</span>, <span class="st">&quot;Alan&quot;</span>),</span>
-<span id="cb22-3"><a href="r-fundamentals.html#cb22-3"></a>  <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">24</span>,<span class="dv">45</span>,<span class="dv">11</span>),</span>
-<span id="cb22-4"><a href="r-fundamentals.html#cb22-4"></a>  <span class="dt">score =</span> <span class="kw">runif</span>(<span class="dv">3</span>) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></span>
-<span id="cb22-5"><a href="r-fundamentals.html#cb22-5"></a>)</span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"Guido"</span>, <span class="st">"Marty"</span>, <span class="st">"Alan"</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">24</span>,<span class="dv">45</span>,<span class="dv">11</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">runif</span>(<span class="dv">3</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="packages" class="section level2">
-<h2><span class="header-section-number">3.5</span> Packages</h2>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p>Many of the tools we use in will come in R packages, little nuggets of code that group related functions together. Installing new packages can be done using the <code>Packages</code> pane of RStudio or the <code>install.packages()</code> function. When we wish to use that code we use the <code>library()</code> function</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-fundamentals.html#cb23-1"></a><span class="kw">library</span>(somepackage)</span></code></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(somepackage)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="using-r-help" class="section level2">
-<h2><span class="header-section-number">3.6</span> Using R Help</h2>
+</section>
+<section id="using-r-help" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-help">Using R Help</h2>
 <p>R provides a command, called <code>?</code> that will display the documentation for functions. For example <code>?mean</code> will display the help for the <code>mean()</code> function.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-fundamentals.html#cb24-1"></a>?mean</span></code></pre></div>
-<p>As in all programming languages the internal documentation in R is written with some assumption that the reader is familiar with the language. This can be a pain when you are starting out as the help will seem a bit obscure at times. Don’t worry about this, usually the <code>Examples</code> section will give you a good idea of how to use the function and as your experience grows then the more things will make more sense.</p>
-
-<div class="roundup">
-<pre><code>* R is an excellent and powerful statistical computing environment</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
-<div class="task">
+<p>As in all programming languages the internal documentation in R is written with some assumption that the reader is familiar with the language. This can be a pain when you are starting out as the help will seem a bit obscure at times. Don’t worry about this, usually the <code>Examples</code> section will give you a good idea of how to use the function and as your experience grows then the more things will make more sense.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Roundup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>R is an excellent and powerful statistical computing environment</li>
+</ul>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+For you to do
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Complete the interactive tutorial online <a href="https://danmaclean.shinyapps.io/r-start">https://danmaclean.shinyapps.io/r-start</a></p>
 </div>
-
-
 </div>
-</div>
-            </section>
 
-          </div>
-        </div>
-      </div>
-<a href="motivation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="effect-size.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./prerequisites.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setting up</span>
+      </a>          
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-</body>
 
-</html>
+
+</body></html>

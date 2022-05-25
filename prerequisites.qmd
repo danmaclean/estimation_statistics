@@ -1,0 +1,56 @@
+# Setting up {.unnumbered}
+
+The primary purpose of this course is to help you to understand how to use statistics that will help with your research. The course will try to explain a branch of statistics called 'Estimation Statistics' which are complementary to the normal sort of hypothesis test procedures and address some of the criticisms of those methods.
+
+Statistics is a computationally heavy topic, so we'll be making use of the R statistical programming environment to do that side of the work. The rest of this chapter will help you get that set up on your own computer.
+
+## Prerequisites
+
+### Knowledge prerequisites
+
+There are no specific knowledge prerequisites for this book but it will be very helpful if you have read and worked through the `ggplot` and `Intro to Stats` books and are familiar with R use.
+
+
+### Software prerequisites
+
+You need to install the following stuff for this book: 
+
+ 1. R
+ 2. RStudio
+ 3. Some R packages: `tidyverse`, `effectsize`, `resample`, `dabestr`,`devtools` and `besthr`
+ 
+
+## Installing R
+
+Follow this link and install the right version for your operating system [https://www.stats.bris.ac.uk/R/](https://www.stats.bris.ac.uk/R/)
+
+## Installing RStudio
+
+Follow this link and install the right version for your operating system [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+
+## Installing R packages in RStudio
+
+### Standard packages
+
+In the RStudio console, type
+
+`install.packages(c("tidyverse", "effectsize", "resample", "dabestr","devtools"))`
+
+and the packages should install.
+
+
+### Development packages
+
+`besthr` is a new package that needs to be installed from the source.
+
+  1. In the `Console` tab in the lower left panel of RStudio type `devtools::install_github("danmaclean/besthr")`
+  
+You may get asked to install newer versions of packages, select `1. All` for these questions.
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'effectsize', 'resample', 'dabestr','devtools'
+), 'packages.bib')
+```

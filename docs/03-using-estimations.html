@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.387">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Estimation Statistics - 3&nbsp; Putting the pieces together</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./prerequisites.html" rel="next">
+<link href="./02-confidence-intervals.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Putting the pieces together</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Estimation Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Estimation-Statistics.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+    <a href="" title="Share" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-share"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+            <i class="bi bi-bi-twitter pe-1"></i>
+          Twitter
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+            <i class="bi bi-bi-facebook pe-1"></i>
+          Facebook
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Motivation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-effect-sizes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Effect Size</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-confidence-intervals.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-using-estimations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Putting the pieces together</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Appendices</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prerequisites.html" class="sidebar-item-text sidebar-link">Setting up</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-fundamentals.html" class="sidebar-item-text sidebar-link">R Fundamentals</a>
+  </div>
+</li>
+    </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#incorporating-estimation-statistics-into-plots" id="toc-incorporating-estimation-statistics-into-plots" class="nav-link active" data-scroll-target="#incorporating-estimation-statistics-into-plots"> <span class="header-section-number">3.1</span> Incorporating estimation statistics into plots</a>
+  <ul class="collapse">
+  <li><a href="#the-box-plot" id="toc-the-box-plot" class="nav-link" data-scroll-target="#the-box-plot"> <span class="header-section-number">3.1.1</span> The Box Plot</a></li>
+  <li><a href="#adding-a-normal-ci-using-dplyr" id="toc-adding-a-normal-ci-using-dplyr" class="nav-link" data-scroll-target="#adding-a-normal-ci-using-dplyr"> <span class="header-section-number">3.1.2</span> Adding a Normal CI using dplyr</a></li>
+  <li><a href="#non-normal-cis" id="toc-non-normal-cis" class="nav-link" data-scroll-target="#non-normal-cis"> <span class="header-section-number">3.1.3</span> Non Normal CIs</a></li>
+  </ul></li>
+  <li><a href="#the-gardner-altman-plot" id="toc-the-gardner-altman-plot" class="nav-link" data-scroll-target="#the-gardner-altman-plot"> <span class="header-section-number">3.2</span> The Gardner-Altman Plot</a></li>
+  <li><a href="#the-cumming-plot" id="toc-the-cumming-plot" class="nav-link" data-scroll-target="#the-cumming-plot"> <span class="header-section-number">3.3</span> The Cumming Plot</a></li>
+  <li><a href="#the-derevnina-plot" id="toc-the-derevnina-plot" class="nav-link" data-scroll-target="#the-derevnina-plot"> <span class="header-section-number">3.4</span> The Derevnina Plot</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"> <span class="header-section-number">3.5</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Putting the pieces together</span></h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<ol type="1">
+<li>Questions</li>
+</ol>
+<ul>
+<li>How do I combine effect sizes and confidence intervals to create an ‘ensemble’?</li>
+</ul>
+<ol start="2" type="1">
+<li>Objectives</li>
+</ol>
+<ul>
+<li>Understand how to use multiple estimation statistics in plots for meaningful interpretations</li>
+<li>Be aware of a range of packages that can aid this</li>
+</ul>
+<ol start="3" type="1">
+<li>Keypoints</li>
+</ol>
+<ul>
+<li>A good statistical analysis combines <span class="math inline">\(p\)</span>-values, effect sizes and confidence intervals</li>
+<li>A good plot shows the ‘ensemble’ well</li>
+</ul>
+<p>Now that we’ve studied the two main estimation statistics principles - the effect size and the confidence interval, we should start to look at how to apply them in our work. We should look at bringing them together in an ensemble of statistics to give a clear picture of magnitude of difference (from effect size) and range of the estimate (from a confidence interval). The methods for this are graphical and based around plots.</p>
+<p>In this chapter we will look at different plots and plot elements that use our computed estimation statistics clearly and informatively such that we can draw conclusions without hypothesis tests.</p>
+<section id="incorporating-estimation-statistics-into-plots" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="incorporating-estimation-statistics-into-plots"><span class="header-section-number">3.1</span> Incorporating estimation statistics into plots</h2>
+<p>You are likely familiar with this sort of plot, it is pretty much the most standard plot around, the bar chart with error bars. This one is of our <code>mouse_wt</code> data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>It is a very poor plot, for reasons we discussed in the preamble to this course and even in the literature, not least in this article by <span class="citation" data-cites="weissgerber2015">Weissgerber (<a href="#ref-weissgerber2015" role="doc-biblioref">2015</a>)</span>. Another MAJOR thing about this plot is that it is only appropriate when the <span class="math inline">\(y\)</span>-axis data are continuous. When you have discrete or categorical data on the <span class="math inline">\(y\)</span>-axis, then this plot DOES NOT APPLY AT ALL. You can see a fuller discussion of why <a href="https://danmaclean.github.io/intro_to_stats/non-parametric-tests-and-linear-models.html#common-misrepresentations-of-discrete-data">here</a>.</p>
+<p>Even though we do have continuous data in this example of mouse mass, the bars and error bars serve to hide the spread and patterns in the numbers, hiding the opportunity to understand what is going on in the data as clearly as possible, and if we apply tests blindly, they can lead us to false conclusions. The least we could do to avoid this would be to release the data! Recall how we can show each data point with a simple <code>ggplot</code> <code>geom_jitter()</code> call.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This is much clearer, we can see all the spread of and patterns in the data. This sort of dotted plot should always be a first step in plotting your data.</p>
+<p>Let’s work towards look at adding a 95% percent CI of the mean on. First, an approach that <em>doesn’t</em> do this, but that you might be tempted to use as a shortcut.</p>
+<section id="the-box-plot" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="the-box-plot"><span class="header-section-number">3.1.1</span> The Box Plot</h3>
+<p>A box plot (or more properly a box and whisker plot) is easy to add to a <code>ggplot</code>, and it is a great geom for showing features of the data like mean and spread, but it doesn’t do a 95% CI of the mean - not quite.</p>
+<p>Here’s a general view of one, not our mouse data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The thick horizontal central line shows the mean, which is useful. The edges of the box show the 25% to 75% IQR (interquartile range), a measure of the spread of the data in which the central 50% is covered by the box. The extent of the vertical lines (whiskers) show the IQR * 1.5 or the most extreme data point (whichever is smallest), the whisker is intended to show the data range. Any points that are beyond the range are drawn in individually and called <code>outliers</code> but they have no special statistical significance.</p>
+<p>A further feature of the box plot, the notch, looks like this</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Those little wedges show the extent of <code>1.58 * IQR / sqrt(n)</code> which is roughly a 95% CI of the mean in normally distributed data, so it can be useful if you have normally distributed data. In this case (and only in this case) if the notches don’t overlap between groups you have a visual clue that there are differences between the groups.</p>
+<p>The box plot shouldn’t be used on its own though. Here is one with our mouse data, including a notch.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>base_plot <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>notch went outside hinges. Try setting notch=FALSE.
+notch went outside hinges. Try setting notch=FALSE.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The notch has gone wild in this one! This is because the sample size is so small (10 data points), the range of the notch goes out of the range of the box and the drawing of the lines in the box goes crazy. The box plot is here harder to interpret.</p>
+</section>
+<section id="adding-a-normal-ci-using-dplyr" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="adding-a-normal-ci-using-dplyr"><span class="header-section-number">3.1.2</span> Adding a Normal CI using dplyr</h3>
+<p>To add a CI we can use the <code>dplyr</code> package to calculate the CI limits then add it to a plot. You will recall that it goes like this</p>
+<ol type="1">
+<li>Use the <code>group_by</code> function to group the data into respective groups to work on them one-by-one</li>
+<li>Use the <code>summarize</code> function to get the summary data we need for each group. We’ll need the mean mass, SD of mass and number of rows (<code>n()</code>).</li>
+<li>Use the <code>summarize</code> function to apply the formula we used for the Normal 95% CI</li>
+<li>Use the <code>summarise</code> function to add the CI upper and lower limits to the mean.</li>
+</ol>
+<p>Note that steps 2 to 4 can be done in one pass. The code looks like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ci_df <span class="ot">&lt;-</span> mouse_wts <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(mass),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">s =</span> <span class="fu">sd</span>(mass),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">half_width =</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>) <span class="sc">*</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">upper =</span> mean <span class="sc">+</span> half_width,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">lower =</span> mean <span class="sc">-</span> half_width</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ci_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  group   mean     n     s half_width upper lower
+  &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 group1  22.7    10  8.16       5.06  27.7 17.6 
+2 group2  11.1    10  2.82       1.75  12.8  9.32</code></pre>
+</div>
+</div>
+<p>And the resulting <code>ci_df</code> contains the calculated values including the upper and lower values of the CI.</p>
+<p>We can apply the summaries to our existing plot using <code>geom_errorbar()</code> and the <code>data</code> argument, which will use our new data frame as the data source exclusively for this geom.</p>
+<p>Because our new data frame doesn’t have the original data in it, we have to turn off the original data mapping <code>aes()</code> with the <code>inherit.aes</code> argument and rename the <span class="math inline">\(x\)</span> axis and colour in a new <code>aes()</code>. We should also set the width of the cross lines at the limits of the error bars as they come out comically wide by default.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>base_plot <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="at">data =</span> ci_df, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>, <span class="fu">aes</span>(<span class="at">x=</span>group, <span class="at">ymax=</span>upper, <span class="at">ymin=</span>lower, <span class="at">colour=</span>group), <span class="at">width=</span><span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>And there we have a clear view of the 95% CI of the means in our groups.</p>
+</section>
+<section id="non-normal-cis" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="non-normal-cis"><span class="header-section-number">3.1.3</span> Non Normal CIs</h3>
+<p>To add a non-normal CI we need to first calculate the CI using bootstrap resampling. This is a semi-involved process, the <code>dabestR</code> package makes it easy, so we’ll look at using that. We will use it to make two specific types of plot, the Gardner-Altman <span class="citation" data-cites="gardner1986">(<a href="#ref-gardner1986" role="doc-biblioref">Gardner and Altman 1986</a>)</span> plot and the Cumming plot <span class="citation" data-cites="cumming2012">(<a href="#ref-cumming2012" role="doc-biblioref">Cumming 2012</a>)</span>. So far we’ve concentrated only on continuous <span class="math inline">\(y\)</span> data, so we will also look at making a Derevnina plot <span class="citation" data-cites="derevnina2021">(<a href="#ref-derevnina2021" role="doc-biblioref">Derevnina et al. 2021</a>)</span>, a variant for categoric data, with the <code>besthr</code> package.</p>
+</section>
+</section>
+<section id="the-gardner-altman-plot" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-gardner-altman-plot"><span class="header-section-number">3.2</span> The Gardner-Altman Plot</h2>
+<p>Invented in 1986 by Gardner and Altman, this is a plot for two group continuous data that can show a choice of effect size and the 95% bootstrap CI and distribution in a single panel.</p>
+<p>Let’s make one with <code>dabestr</code></p>
+<p>The first step is to load our <code>mouse_wts</code> data into a <code>dabest</code> object. We must specify the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> variable names and using the <code>idx</code> argument, the two groups to be compared. The first group will be considered the base for comparison group. We must also tell the function whether these data are paired or not.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dabestr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dbest_data <span class="ot">&lt;-</span> <span class="fu">dabest</span>(mouse_wts, group, mass,  <span class="at">idx =</span> <span class="fu">c</span>(<span class="st">"group1"</span>, <span class="st">"group2"</span>), <span class="at">paired =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dbest_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>dabestr (Data Analysis with Bootstrap Estimation in R) v0.3.0
+=============================================================
+
+Good morning!
+The current time is 11:01 am on Wednesday May 25, 2022.
+
+Dataset    :  mouse_wts
+The first five rows are:
+   group     mass
+1 group1 19.57635
+2 group1 29.59349
+3 group1 23.89572
+4 group1 17.75500
+5 group1 11.47902
+
+X Variable :  group
+Y Variable :  mass
+
+Effect sizes(s) will be computed for:
+  1. group2 minus group1</code></pre>
+</div>
+</div>
+<p>We get a summary that is very friendly and let’s us verify whether we entered the data properly.</p>
+<p>We can now do an effect size calculation to add to the data object. Here we’ll use the mean sample difference, but there are other options, including a <code>cohens_d()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dbest_with_mean_diff <span class="ot">&lt;-</span> <span class="fu">mean_diff</span>(dbest_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can now draw the plot with the generic <code>plot()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dbest_with_mean_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This plot is extrememly informative and gives us a super clear indication of our data, the points are shown, the sample size is quoted, the effect size is plotted and the bootstrap CI and distribution are plotted. This is everything we need from a plot and statistical procedure. Importantly, we can conclude that these two samples are not likely to be the same without relying on opaque statistical tests. The plot and the generated numbers also make any argument that the observed differences are significant clearly convincing.</p>
+</section>
+<section id="the-cumming-plot" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-cumming-plot"><span class="header-section-number">3.3</span> The Cumming Plot</h2>
+<p>The Cumming plot extends the ideas of the Gardner-Altman plot into more groups and comparisons, named after Cumming who suggested designs like this in his paper <span class="citation" data-cites="cumming2012">(<a href="#ref-cumming2012" role="doc-biblioref">Cumming 2012</a>)</span>.</p>
+<p>The setup is similar, we will need some data with more groups in it, <code>mouse_wt_4g</code>. The othe major difference is that the comparison specification is wrapped in a list of comparisons.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dabestr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mouse_wt_4g <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dabest</span>(group, mass, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">idx =</span> <span class="fu">list</span>(</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">c</span>(<span class="st">'group1'</span>, <span class="st">'group2'</span>,<span class="st">'group3'</span>,<span class="st">'group4'</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">paired=</span><span class="cn">FALSE</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_diff</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The plot shows something similar to the Gardner-Altman in a two-panel layout to allow the bootstrap profiles space. Also the black lines show the extent of the standard deviation, with the mean represented by the gap.</p>
+<p>As with the previous plot, this is easy to interpret, rich and informative and convincing. It is clear to see in this plot that the masses of <code>group1</code> are substantially and significantly higher than the other groups. We see also that <code>group2</code> is not different to <code>group3</code> or <code>group4</code>, but <code>group3</code> and <code>group4</code> are different from each other.</p>
+</section>
+<section id="the-derevnina-plot" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="the-derevnina-plot"><span class="header-section-number">3.4</span> The Derevnina Plot</h2>
+<p>The Gardner-Altman and Cumming plots work really well on continuous <span class="math inline">\(y\)</span> data. As we have discussed before <a href="https://danmaclean.github.io/intro_to_stats/non-parametric-tests-and-linear-models.html#common-misrepresentations-of-discrete-data">here</a>, categorical or discrete data need a different representation. An extension of the ideas here for categoric data in general is the Derevnina plot, which was applied specifically to HR experiment score data in her paper <span class="citation" data-cites="derevnina2021">(<a href="#ref-derevnina2021" role="doc-biblioref">Derevnina et al. 2021</a>)</span>.</p>
+<p>The basic idea is the same, we have HR score data with e.g strain, replicate and score.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hr_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    strain replicate score
+1  control         1     1
+2  control         2     2
+3  control         3     1
+4  control         4     1
+5  control         5     1
+6  control         6     2
+7     mild         1     3
+8     mild         2     4
+9     mild         3     4
+10    mild         4     4
+11    mild         5     5
+12    mild         6     4
+13  deadly         1     5
+14  deadly         2     4
+15  deadly         3     6
+16  deadly         4     5
+17  deadly         5     4
+18  deadly         6     5</code></pre>
+</div>
+</div>
+<p>We can use the <code>besthr</code> package to create analgous plots for this categoric data. The <code>estimate()</code> function requires the data, the <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> variable names and the name of the control in <span class="math inline">\(x\)</span>. It will return an estimation object, which we can plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(besthr)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>est_1 <span class="ot">&lt;-</span> <span class="fu">estimate</span>(hr_scores, score, strain, <span class="at">control=</span><span class="st">"control"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 0.355</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The resulting bootstrap estimations are performed on ranked data, the ranks are computed automatically for us and the resulting rank mean difference shown as dotted lines. The blue areas of the bootstrap distribution show the 95% CI for the mean rank. The plot is again very clear that the <code>control</code> has lower mean rank than each of the other two <code>strain</code>s but the <code>mild</code> and <code>deadly</code> strains are not much different from each other.</p>
+<p>We can see technical replicates if we have used them by extending the call to estimate to include these explictly and we can plot them by setting the <code>which</code> argument to <code>just_data</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>est_2 <span class="ot">&lt;-</span> <span class="fu">estimate</span>(hr_scores, score, strain, replicate, <span class="at">control=</span><span class="st">"control"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_2, <span class="at">which=</span><span class="st">"just_data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 0.383</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="03-using-estimations_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The plot is clearer now about the spread of scores in different replicates.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Roundup
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ensemble estimation statistics give us a good view of differences in our data without relying solely (or at all) on reductive <span class="math inline">\(p\)</span>-values.</p>
+</div>
+</div>
+</section>
+<section id="references" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="references"><span class="header-section-number">3.5</span> References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-cumming2012" class="csl-entry" role="doc-biblioentry">
+Cumming, Geoff. 2012. <em>Understanding the New Statistics: Effect Sizes, Confidence Intervals, and Meta-Analysis.</em> New York: Routledge.
+</div>
+<div id="ref-derevnina2021" class="csl-entry" role="doc-biblioentry">
+Derevnina, Lida, Mauricio P. Contreras, Hiroaki Adachi, Jessica Upson, Angel Vergara Cruces, Rongrong Xie, Jan Sklenar, et al. 2021. <span>“Plant Pathogens Convergently Evolved to Counteract Redundant Nodes of an NLR Immune Receptor Network.”</span> <em>bioRxiv</em>. <a href="https://doi.org/10.1101/2021.02.03.429184">https://doi.org/10.1101/2021.02.03.429184</a>.
+</div>
+<div id="ref-gardner1986" class="csl-entry" role="doc-biblioentry">
+Gardner, M J, and D G Altman. 1986. <span>“Confidence Intervals Rather Than p Values: Estimation Rather Than Hypothesis Testing.”</span> <em>BMJ</em> 292 (6522): 746–50. <a href="https://doi.org/10.1136/bmj.292.6522.746">https://doi.org/10.1136/bmj.292.6522.746</a>.
+</div>
+<div id="ref-weissgerber2015" class="csl-entry" role="doc-biblioentry">
+Weissgerber, Natasa M. AND Winham, Tracey L. AND Milic. 2015. <span>“Beyond Bar and Line Graphs: Time for a New Data Presentation Paradigm.”</span> <em>PLOS Biology</em> 13 (4): 1–10. <a href="https://doi.org/10.1371/journal.pbio.1002128">https://doi.org/10.1371/journal.pbio.1002128</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./02-confidence-intervals.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Confidence Intervals</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./prerequisites.html" class="pagination-link">
+        <span class="nav-page-text">Setting up</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
