@@ -150,7 +150,7 @@ library(dabestr)
 ```{r}
 library(dabestr)
 
-dbest_data <- dabest(mouse_wts, group, mass,  idx = c("group1", "group2"), paired = FALSE)
+dbest_data <- load(mouse_wts, group, mass,  idx = c("group1", "group2"))
 
 dbest_data
 ```
@@ -166,7 +166,7 @@ dbest_with_mean_diff <- mean_diff(dbest_data)
 We can now draw the plot with the generic `plot()` function.
 
 ```{r}
-plot(dbest_with_mean_diff)
+dabest_plot(dbest_with_mean_diff)
 ```
 
 This plot is extrememly informative and gives us a super clear indication of our data, the points are shown, the sample size is quoted, the effect size is plotted and the bootstrap CI and distribution are plotted. This is everything we need from a plot and statistical procedure. Importantly, we can conclude that these two samples are not likely to be the same without relying on opaque statistical tests. The plot and the generated numbers also make any argument that the observed differences are significant clearly convincing.
@@ -191,14 +191,13 @@ mouse_wt_4g <- data.frame(
 ```{r}
 library(dabestr)
 mouse_wt_4g %>%
-  dabest(group, mass, 
+  load(group, mass, 
          idx = list(
                 c('group1', 'group2','group3','group4')
-                ),
-         paired=FALSE
+                )
    ) %>%
   mean_diff() %>%
-  plot()
+  dabest_plot()
 ```
 
 The plot shows something similar to the Gardner-Altman in a two-panel layout to allow the bootstrap profiles space. Also the black lines show the extent of the standard deviation, with the mean represented by the gap. 

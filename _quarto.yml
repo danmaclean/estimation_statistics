@@ -23,6 +23,10 @@ bibliography: book.bib
 format:
   html:
     theme: cosmo
+    other-links:
+      - text: Introduction to Non-Frequentist Statistics Chatbot
+        href: https://tsl-bioinformatics.shinyapps.io/nonfreqstats_chatbot/
+        target: _blank
   pdf:
     documentclass: scrreprt
 comments:
