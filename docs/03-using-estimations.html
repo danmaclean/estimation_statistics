@@ -283,7 +283,7 @@ window.Quarto = {
   <li><a href="#the-derevnina-plot" id="toc-the-derevnina-plot" class="nav-link" data-scroll-target="#the-derevnina-plot"><span class="header-section-number">3.4</span> The Derevnina Plot</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3.5</span> References</a></li>
   </ul>
-<div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://tsl-bioinformatics.shinyapps.io/nonfreqstats_chatbot/" target="_blank"><i class="bi bi-link-45deg"></i>Introduction to Non-Frequentist Statistics Chatbot</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -459,13 +459,13 @@ Notch went outside hinges
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dbest_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DABESTR v2023.9.12
+<pre><code>DABESTR v2025.3.15
 ==================
 
-Good morning!
-The current time is 10:54 AM on Wednesday December 04, 2024.
+Good afternoon!
+The current time is 14:10 p.m. on Monday November 03, 2025.
 
-Effect size(s) with 95% confidence intervals will be computed for:
+ffect size(s) with 95% confidence intervals will be computed for:
 1. group2 minus group1
 
 5000 resamples will be used to generate the effect size bootstraps.</code></pre>
@@ -503,10 +503,6 @@ Effect size(s) with 95% confidence intervals will be computed for:
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean_diff</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dabest_plot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in get_plot_component(plot, "guide-box"): Multiple components found;
-returning the first one. To return all, use `return_all = TRUE`.</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -523,7 +519,7 @@ returning the first one. To return all, use `return_all = TRUE`.</code></pre>
 <p>The Gardner-Altman and Cumming plots work really well on continuous <span class="math inline">\(y\)</span> data. As we have discussed before <a href="https://danmaclean.github.io/intro_to_stats/non-parametric-tests-and-linear-models.html#common-misrepresentations-of-discrete-data">here</a>, categorical or discrete data need a different representation. An extension of the ideas here for categoric data in general is the Derevnina plot, which was applied specifically to HR experiment score data in her paper <span class="citation" data-cites="derevnina2021">(<a href="#ref-derevnina2021" role="doc-biblioref">Derevnina et al. 2021</a>)</span>.</p>
 <p>The basic idea is the same, we have HR score data with e.g strain, replicate and score.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>hr_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hr_scores</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    strain replicate score
 1  control         1     1
@@ -548,12 +544,18 @@ returning the first one. To return all, use `return_all = TRUE`.</code></pre>
 </div>
 <p>We can use the <code>besthr</code> package to create analgous plots for this categoric data. The <code>estimate()</code> function requires the data, the <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> variable names and the name of the control in <span class="math inline">\(x\)</span>. It will return an estimation object, which we can plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(besthr)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>est_1 <span class="ot">&lt;-</span> <span class="fu">estimate</span>(hr_scores, score, strain, <span class="at">control=</span><span class="st">"control"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(besthr)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>est_1 <span class="ot">&lt;-</span> <span class="fu">estimate</span>(hr_scores, score, strain, <span class="at">control=</span><span class="st">"control"</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Picking joint bandwidth of 0.411</code></pre>
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the besthr package.
+  Please report the issue to the authors.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Picking joint bandwidth of 0.267</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -569,7 +571,7 @@ returning the first one. To return all, use `return_all = TRUE`.</code></pre>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>est_2 <span class="ot">&lt;-</span> <span class="fu">estimate</span>(hr_scores, score, strain, replicate, <span class="at">control=</span><span class="st">"control"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(est_2, <span class="at">which=</span><span class="st">"just_data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Picking joint bandwidth of 0.35</code></pre>
+<pre><code>Picking joint bandwidth of 0.358</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
